@@ -65,7 +65,7 @@
             bindings = <
 &trans  &trans  &trans  &trans     &trans                            &kp LG(NUMBER_3)  &kp LG(NUMBER_2)  &kp LG(NUMBER_1)  &trans  &trans
 &trans  &trans  &trans  &trans     &trans  &trans         &kp LA(D)  &kp LA(T)         &trans            &kp LA(U)         &trans  &trans
-&trans  &trans  &trans  &reset     &trans  &kp LC(I)      &kp LA(H)  &kp LA(C)         &trans            &kp LA(S)         &trans  &trans
+&trans  &trans  &trans  &trans     &trans  &kp LC(I)      &kp LA(H)  &kp LA(C)         &trans            &kp LA(S)         &trans  &trans
 &trans  &trans  &trans  &kp LC(V)  &trans  &kp LC(B)      &kp LA(L)  &kp LA(K)                                                     &trans
             >;
         };
