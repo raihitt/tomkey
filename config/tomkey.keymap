@@ -54,10 +54,10 @@
 
         FUNCTION {
             bindings = <
-&kp SEMI              &kp APOS              &kp LGUI         &trans        &trans                              &trans  &trans  &trans  &trans  &trans
-&kp N1                &trans                &trans           &trans        &trans  &bt BT_CLR_ALL      &trans  &trans  &trans  &trans  &trans  &trans
-&kp RIGHT             &kp LEFT              &trans           &trans        &trans  &bt BT_SEL 0        &trans  &trans  &trans  &trans  &trans  &trans
-&kp C_BRIGHTNESS_INC  &kp C_BRIGHTNESS_DEC  &kp C_VOLUME_UP  &kp C_VOL_DN  &trans  &bt BT_SEL 1        &trans  &trans                          &trans
+&kp SEMI              &kp APOS              &kp LGUI         &trans        &trans                                          &trans  &trans  &trans  &trans  &trans
+&kp N1                &trans                &trans           &trans        &trans         &bt BT_CLR_ALL      &bootloader  &trans  &trans  &trans  &trans  &trans
+&kp RIGHT             &kp LEFT              &trans           &trans        &bt BT_DISC 0  &bt BT_SEL 0        &trans       &trans  &trans  &trans  &trans  &trans
+&kp C_BRIGHTNESS_INC  &kp C_BRIGHTNESS_DEC  &kp C_VOLUME_UP  &kp C_VOL_DN  &bt BT_DISC 1  &bt BT_SEL 1        &trans       &trans                          &trans
             >;
         };
 
