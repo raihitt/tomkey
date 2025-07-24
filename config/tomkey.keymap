@@ -36,19 +36,19 @@
 
         CTROL {
             bindings = <
-&kp LEFT_BRACE  &kp LS(N1)  &kp LS(FSLH)  &trans     &kp LC(T)                            &trans  &trans  &trans  &trans  &trans
-&kp APOS        &kp FSLH    &kp BSLH      &trans     &kp LC(F)  &trans         &trans     &trans  &trans  &trans  &trans  &trans
-&trans          &trans      &trans        &trans     &kp LC(V)  &trans         &kp LC(A)  &trans  &trans  &trans  &trans  &trans
-&trans          &trans      &trans        &kp LC(X)  &kp LC(C)  &kp LC(V)      &kp LC(N)  &trans                          &trans
+&kp LEFT_BRACE  &kp LS(N1)  &kp LS(FSLH)  &trans     &kp LC(T)                                &trans  &trans  &trans  &trans  &trans
+&kp APOS        &trans      &trans        &kp LC(D)  &kp LC(F)  &kp LC(LS(V))      &kp LC(A)  &trans  &trans  &trans  &trans  &trans
+&trans          &trans      &trans        &kp LC(X)  &kp LC(V)  &trans             &kp LC(A)  &trans  &trans  &trans  &trans  &trans
+&trans          &trans      &trans        &kp LC(X)  &kp LC(C)  &kp LC(V)          &kp LC(N)  &trans                          &trans
             >;
         };
 
-        NUM {
+        NUMBER {
             bindings = <
-&kp N1  &kp N2     &kp N3   &kp LS(NUMBER_8)  &kp LS(N9)                      &kp LC(N3)  &kp LC(N2)  &kp LC(N1)  &kp SLASH  &kp SEMICOLON
-&kp N4  &kp N5     &kp N6   &trans            &trans      &trans      &trans  &trans      &trans      &trans      &trans     &kp SQT
-&kp N7  &kp N8     &kp N9   &trans            &trans      &trans      &trans  &trans      &trans      &trans      &trans     &trans
-&kp N0  &kp COMMA  &kp DOT  &trans            &trans      &trans      &trans  &trans                                         &trans
+&kp N1  &kp N2     &kp N3   &kp LS(NUMBER_8)  &kp LS(N9)                              &kp LS(SLASH)     &trans  &trans  &kp SLASH  &kp SEMICOLON
+&kp N4  &kp N5     &kp N6   &trans            &trans      &trans      &kp LEFT_BRACE  &kp LS(NUMBER_1)  &trans  &trans  &trans     &kp SQT
+&kp N7  &kp N8     &kp N9   &trans            &trans      &trans      &trans          &kp LEFT_SHIFT    &trans  &trans  &trans     &trans
+&kp N0  &kp COMMA  &kp DOT  &kp MINUS         &trans      &trans      &trans          &trans                                       &trans
             >;
         };
 
