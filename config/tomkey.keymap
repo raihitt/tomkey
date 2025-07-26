@@ -5,13 +5,13 @@
  *
  * レイヤー構成:
  * - Layer 0: default_layer - 基本レイヤー
- * - Layer 1-5: Windows用レイアウトグループ
- *   - Layer 1: SCROLL - スクロール操作レイヤー
+ * - Layer 1: SCROLL - WIN/MAC共有レイヤー（スクロール操作）
+ * - Layer 2-5: WIN専用レイアウトグループ
  *   - Layer 2: CTROL - コントロールレイヤー
  *   - Layer 3: NUMBER - 数字入力レイヤー
  *   - Layer 4: FUNCTION - ファンクションキーレイヤー
  *   - Layer 5: markdw - マークダウン編集レイヤー
- * - Layer 6-9: Mac用レイアウトグループ（Layer2-5を複製）
+ * - Layer 6-9: MAC専用レイアウトグループ（Layer2-5を複製）
  *   - Layer 6: mac_ctrol - Mac用コントロールレイヤー
  *   - Layer 7: mac_number - Mac用数字入力レイヤー
  *   - Layer 8: mac_function - Mac用ファンクションキーレイヤー
@@ -21,8 +21,8 @@
  * - switch_to_win_bt: Bluetooth切断 → Windowsデバイス(0)接続
  * - switch_to_win_layer: Windows用レイヤー(6)をアクティブ
  * - switch_to_mac_bt: Bluetooth切断 → Macデバイス(1)接続
- * - win_layer_group: Windows用レイアウトグループ(Layer1-5)をtog_onで登録
- * - mac_layer_group: Mac用レイアウトグループ(Layer6-9)をtog_onで登録
+ * - win_layer_group: WIN専用レイアウトグループ(Layer2-5)をtog_onで登録
+ * - mac_layer_group: MAC専用レイアウトグループ(Layer6-9)をtog_onで登録
  */
 
 #include <behaviors.dtsi>
@@ -77,14 +77,14 @@
                 <&bt BT_SEL 1>;
         };
 
-        // Windows用レイアウトグループ登録（Layer1-5をtog_onで登録）
+        // Windows専用レイアウトグループ登録（Layer2-5をtog_onで登録）
         win_layer_group: win_layer_group {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&macro_press &tog_on 1>, <&macro_release &tog_on 1>, <&macro_press &tog_on 2>, <&macro_release &tog_on 2>, <&macro_press &tog_on 3>, <&macro_release &tog_on 3>, <&macro_press &tog_on 4>, <&macro_release &tog_on 4>, <&macro_press &tog_on 5>, <&macro_release &tog_on 5>;
+            bindings = <&macro_press &tog_on 2>, <&macro_release &tog_on 2>, <&macro_press &tog_on 3>, <&macro_release &tog_on 3>, <&macro_press &tog_on 4>, <&macro_release &tog_on 4>, <&macro_press &tog_on 5>, <&macro_release &tog_on 5>;
         };
 
-        // Mac用レイアウトグループ登録（Layer6-9をtog_onで登録）
+        // Mac専用レイアウトグループ登録（Layer6-9をtog_onで登録）
         mac_layer_group: mac_layer_group {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -108,7 +108,7 @@
         };
 
         SCROLL {
-            // Windows用レイアウトグループ - Layer 1: スクロール操作レイヤー
+            // WIN/MAC共有レイヤー - Layer 1: スクロール操作レイヤー
             bindings = <
 &trans  &trans  &trans  &trans  &trans                                                  &kp LG(A)      &kp LG(W)       &trans          &kp LG(T)        &kp MINUS
 &trans  &trans  &trans  &trans  &trans               &kp LG(F)               &kp LG(C)  &kp LS(LG(V))  &trans          &kp UP_ARROW    &trans           &kp LA(L)
@@ -118,7 +118,7 @@
         };
 
         CTROL {
-            // Windows用レイアウトグループ - Layer 2: コントロールレイヤー
+            // WIN専用レイアウトグループ - Layer 2: コントロールレイヤー
             bindings = <
 &kp LEFT_BRACE  &kp LS(N1)  &kp LS(FSLH)  &trans     &kp LC(T)                                &trans  &trans  &trans  &trans  &trans
 &kp APOS        &trans      &trans        &kp LC(D)  &kp LC(F)  &kp LC(LS(V))      &kp LC(A)  &trans  &trans  &trans  &trans  &trans
@@ -128,7 +128,7 @@
         };
 
         NUMBER {
-            // Windows用レイアウトグループ - Layer 3: 数字入力レイヤー
+            // WIN専用レイアウトグループ - Layer 3: 数字入力レイヤー
             bindings = <
 &kp N1  &kp N2     &kp N3   &kp LS(NUMBER_8)  &kp LS(N9)                              &kp LS(SLASH)     &trans  &trans  &kp SLASH  &kp SEMICOLON
 &kp N4  &kp N5     &kp N6   &trans            &trans      &trans      &kp LEFT_BRACE  &kp LS(NUMBER_1)  &trans  &trans  &trans     &kp SQT
@@ -138,7 +138,7 @@
         };
 
         FUNCTION {
-            // Windows用レイアウトグループ - Layer 4: ファンクションキーレイヤー
+            // WIN専用レイアウトグループ - Layer 4: ファンクションキーレイヤー
             bindings = <
 &kp SEMI              &kp APOS              &kp LGUI         &trans        &bootloader                                           &bootloader           &trans  &trans  &trans  &trans
 &kp N1                &trans                &trans           &trans        &trans         &bt BT_CLR_ALL      &trans             &trans                &trans  &trans  &trans  &trans
@@ -148,7 +148,7 @@
         };
 
         markdw {
-            // Windows用レイアウトグループ - Layer 5: マークダウン編集レイヤー
+            // WIN専用レイアウトグループ - Layer 5: マークダウン編集レイヤー
             bindings = <
 &trans  &trans  &trans  &trans     &trans                            &kp LG(NUMBER_3)  &kp LG(NUMBER_2)  &kp LG(NUMBER_1)  &trans  &trans
 &trans  &trans  &trans  &trans     &trans  &trans         &kp LA(D)  &kp LA(T)         &trans            &kp LA(U)         &trans  &trans
@@ -158,7 +158,7 @@
         };
 
         mac_ctrol {
-            // Mac用レイアウトグループ - Layer 6: Mac用コントロールレイヤー（Layer2を複製）
+            // MAC専用レイアウトグループ - Layer 6: Mac用コントロールレイヤー（Layer2を複製）
             bindings = <
 &kp LEFT_BRACE  &kp LS(N1)  &kp LS(FSLH)  &trans     &kp LC(T)                                &trans  &trans  &trans  &trans  &trans
 &kp APOS        &trans      &trans        &kp LC(D)  &kp LC(F)  &kp LC(LS(V))      &kp LC(A)  &trans  &trans  &trans  &trans  &trans
@@ -168,7 +168,7 @@
         };
 
         mac_number {
-            // Mac用レイアウトグループ - Layer 7: Mac用数字入力レイヤー（Layer3を複製）
+            // MAC専用レイアウトグループ - Layer 7: Mac用数字入力レイヤー（Layer3を複製）
             bindings = <
 &kp N1  &kp N2     &kp N3   &kp LS(NUMBER_8)  &kp LS(N9)                              &kp LS(SLASH)     &trans  &trans  &kp SLASH  &kp SEMICOLON
 &kp N4  &kp N5     &kp N6   &trans            &trans      &trans      &kp LEFT_BRACE  &kp LS(NUMBER_1)  &trans  &trans  &trans     &kp SQT
@@ -178,7 +178,7 @@
         };
 
         mac_function {
-            // Mac用レイアウトグループ - Layer 8: Mac用ファンクションキーレイヤー（Layer4を複製）
+            // MAC専用レイアウトグループ - Layer 8: Mac用ファンクションキーレイヤー（Layer4を複製）
             bindings = <
 &kp SEMI              &kp APOS              &kp LGUI         &trans        &bootloader                                           &bootloader           &trans  &trans  &trans  &trans
 &kp N1                &trans                &trans           &trans        &trans         &bt BT_CLR_ALL      &trans             &trans                &trans  &trans  &trans  &trans
@@ -188,7 +188,7 @@
         };
 
         mac_markdw {
-            // Mac用レイアウトグループ - Layer 9: Mac用マークダウン編集レイヤー（Layer5を複製）
+            // MAC専用レイアウトグループ - Layer 9: Mac用マークダウン編集レイヤー（Layer5を複製）
             bindings = <
 &trans  &trans  &trans  &trans     &trans                            &kp LG(NUMBER_3)  &kp LG(NUMBER_2)  &kp LG(NUMBER_1)  &trans  &trans
 &trans  &trans  &trans  &trans     &trans  &trans         &kp LA(D)  &kp LA(T)         &trans            &kp LA(U)         &trans  &trans
