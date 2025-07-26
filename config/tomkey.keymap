@@ -60,5 +60,15 @@
 &trans  &trans  &trans  &trans  &kp LC(RIGHT_ARROW)  &kp LC(LEFT_ARROW)      &kp LANG2  &kp LANG1                                                       &kp LG(Z)
             >;
         };
+
+        CTROL {
+            // WIN専用レイアウトグループ - Layer 2: コントロールレイヤー
+            bindings = <
+&kp LEFT_BRACE  &kp LS(N1)  &kp LS(FSLH)  &trans     &kp LC(T)                                &trans  &trans  &trans  &trans  &trans
+&kp APOS        &trans      &trans        &kp LC(D)  &kp LC(F)  &kp LC(LS(V))      &kp LC(A)  &trans  &trans  &trans  &trans  &trans
+&trans          &trans      &trans        &kp LC(X)  &kp LC(V)  &trans             &kp LC(A)  &trans  &trans  &trans  &trans  &trans
+&trans          &trans      &trans        &kp LC(X)  &kp LC(C)  &kp LC(V)          &kp LC(N)  &trans                          &trans
+            >;
+        };
     };
 };
