@@ -100,5 +100,15 @@
 &trans     &trans       &trans      &trans       &trans      &trans      &trans          &trans                                       &trans
             >;
         };
+
+        mac_ctrol {
+            // MAC専用レイアウトグループ - Layer 6: MAC用コントロールレイヤー
+            bindings = <
+&kp LEFT_BRACE  &kp LS(N1)  &kp LS(FSLH)  &trans     &kp LA(T)                                &trans  &trans  &trans  &trans  &trans
+&kp APOS        &trans      &trans        &kp LA(D)  &kp LA(F)  &kp LA(LS(V))      &kp LA(A)  &trans  &trans  &trans  &trans  &trans
+&trans          &trans      &trans        &kp LA(X)  &kp LA(V)  &trans             &kp LA(A)  &trans  &trans  &trans  &trans  &trans
+&trans          &trans      &trans        &kp LA(X)  &kp LA(C)  &kp LA(V)          &kp LA(N)  &trans                          &trans
+            >;
+        };
     };
 };
