@@ -32,10 +32,15 @@
 
 / {
     behaviors {
+        tog_on: tog_on {
+            compatible = "zmk,behavior-toggle-on";
+            #binding-cells = <0>;
+        };
+
         win_layer_group: win_layer_group {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&macro_press &mo 2>, <&macro_release &mo 2>;
+            bindings = <&macro_press &tog_on 2>, <&macro_release &tog_on 2>;
         };
     };
 
