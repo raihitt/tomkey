@@ -130,5 +130,15 @@
 &trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans                          &trans
             >;
         };
+
+        mac_markdw {
+            // MAC専用レイアウトグループ - Layer 9: MAC用マークダウン編集レイヤー
+            bindings = <
+&kp GRAVE  &kp LS(N1)  &kp LS(N2)  &kp LS(N3)  &kp LS(N4)                              &kp LS(N5)  &kp LS(N6)  &kp LS(N7)  &kp LS(N8)  &kp LS(N9)
+&kp MINUS  &kp LS(N0)  &kp EQUAL   &trans       &trans      &trans      &trans          &trans       &trans      &trans      &trans      &trans
+&trans     &trans       &trans      &trans       &trans      &trans      &trans          &trans       &trans      &trans      &trans      &trans
+&trans     &trans       &trans      &trans       &trans      &trans      &trans          &trans                                       &trans
+            >;
+        };
     };
 };
