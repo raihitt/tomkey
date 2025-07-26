@@ -1,3 +1,26 @@
+/*
+ * Tomkey Keyboard Keymap Configuration
+ *
+ * このファイルはTomkeyキーボードのキーマップ設定です。
+ *
+ * レイヤー構成:
+ * - Layer 0: default_layer - 基本レイヤー
+ * - Layer 1: MOUSE - マウス操作レイヤー
+ * - Layer 2: SCROLL - スクロール操作レイヤー
+ * - Layer 3: CTROL - コントロールレイヤー
+ * - Layer 4: NUMBER - 数字入力レイヤー
+ * - Layer 5: FUNCTION - ファンクションキーレイヤー
+ * - Layer 6: markdw - マークダウン編集レイヤー
+ * - Layer 7: win_layer - Windows用レイヤー
+ * - Layer 8: mac_layer - Mac用レイヤー（Cmd+A、Cmd+S等のMac標準キー付き）
+ *
+ * カスタムマクロ:
+ * - switch_to_win_bt: Bluetooth切断 → Windowsデバイス(0)接続
+ * - switch_to_win_layer: Windows用レイヤー(7)をアクティブ
+ * - switch_to_mac_bt: Bluetooth切断 → Macデバイス(1)接続
+ * - switch_to_mac_layer: Mac用レイヤー(8)をアクティブ
+ */
+
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
@@ -5,21 +28,26 @@
 
 / {
     behaviors {
+        // カスタムマクロ: OS切り替え用
+        // Windows用Bluetooth切り替え（デバイス0に接続）
         switch_to_win_bt: switch_to_win_bt {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&macro_press &bt BT_DISC>, <&macro_release &bt BT_DISC>, <&macro_press &bt BT_SEL 0>, <&macro_release &bt BT_SEL 0>;
         };
+        // Windows用レイヤー切り替え（レイヤー7をアクティブ）
         switch_to_win_layer: switch_to_win_layer {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&macro_press &mo 7>, <&macro_release &mo 7>;
         };
+        // Mac用Bluetooth切り替え（デバイス1に接続）
         switch_to_mac_bt: switch_to_mac_bt {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&macro_press &bt BT_DISC>, <&macro_release &bt BT_DISC>, <&macro_press &bt BT_SEL 1>, <&macro_release &bt BT_SEL 1>;
         };
+        // Mac用レイヤー切り替え（レイヤー8をアクティブ、Mac標準キー付き）
         switch_to_mac_layer: switch_to_mac_layer {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -94,6 +122,8 @@
         };
 
         win_layer {
+            // Windows用レイヤー（レイヤー7）
+            // 標準QWERTY配列
             bindings = <
 &kp N1  &kp N2  &kp N3  &kp N4  &kp N5                              &kp N6  &kp N7  &kp N8  &kp N9  &kp N0
 &kp Q   &kp W   &kp E   &kp R   &kp T  &trans      &kp Y  &kp U   &kp I   &kp O   &kp P   &kp BACKSLASH
@@ -103,6 +133,8 @@
         };
 
         mac_layer {
+            // Mac用レイヤー（レイヤー8）
+            // Mac標準キー付き（Cmd+A、Cmd+S、Cmd+Z等）
             bindings = <
 &kp N1  &kp N2  &kp N3  &kp N4  &kp N5                              &kp N6  &kp N7  &kp N8  &kp N9  &kp N0
 &kp LC(A)   &kp LC(S)   &kp LC(D)   &kp LC(F)   &kp LC(G)  &trans      &kp LC(H)  &kp LC(J)   &kp LC(K)   &kp LC(L)   &kp LC(SEMICOLON)  &kp LC(APOS)
