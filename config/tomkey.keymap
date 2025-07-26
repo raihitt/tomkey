@@ -5,12 +5,13 @@
  *
  * レイヤー構成:
  * - Layer 0: default_layer - 基本レイヤー
- * - Layer 1: SCROLL - スクロール操作レイヤー
- * - Layer 2: CTROL - コントロールレイヤー
- * - Layer 3: NUMBER - 数字入力レイヤー
- * - Layer 4: FUNCTION - ファンクションキーレイヤー
- * - Layer 5: markdw - マークダウン編集レイヤー
- * - Layer 6: win_layer - Windows用レイヤー
+ * - Layer 1-5: Windows用レイアウトグループ
+ *   - Layer 1: SCROLL - スクロール操作レイヤー
+ *   - Layer 2: CTROL - コントロールレイヤー
+ *   - Layer 3: NUMBER - 数字入力レイヤー
+ *   - Layer 4: FUNCTION - ファンクションキーレイヤー
+ *   - Layer 5: markdw - マークダウン編集レイヤー
+ * - Layer 6: win_layer - Windows用標準QWERTYレイヤー
  * - Layer 7: mac_layer - Mac用レイヤー（Cmd+A、Cmd+S等のMac標準キー付き）
  *
  * カスタムマクロ:
@@ -92,6 +93,7 @@
         };
 
         SCROLL {
+            // Windows用レイアウトグループ - Layer 1: スクロール操作レイヤー
             bindings = <
 &trans  &trans  &trans  &trans  &trans                                                  &kp LG(A)      &kp LG(W)       &trans          &kp LG(T)        &kp MINUS
 &trans  &trans  &trans  &trans  &trans               &kp LG(F)               &kp LG(C)  &kp LS(LG(V))  &trans          &kp UP_ARROW    &trans           &kp LA(L)
@@ -101,6 +103,7 @@
         };
 
         CTROL {
+            // Windows用レイアウトグループ - Layer 2: コントロールレイヤー
             bindings = <
 &kp LEFT_BRACE  &kp LS(N1)  &kp LS(FSLH)  &trans     &kp LC(T)                                &trans  &trans  &trans  &trans  &trans
 &kp APOS        &trans      &trans        &kp LC(D)  &kp LC(F)  &kp LC(LS(V))      &kp LC(A)  &trans  &trans  &trans  &trans  &trans
@@ -110,6 +113,7 @@
         };
 
         NUMBER {
+            // Windows用レイアウトグループ - Layer 3: 数字入力レイヤー
             bindings = <
 &kp N1  &kp N2     &kp N3   &kp LS(NUMBER_8)  &kp LS(N9)                              &kp LS(SLASH)     &trans  &trans  &kp SLASH  &kp SEMICOLON
 &kp N4  &kp N5     &kp N6   &trans            &trans      &trans      &kp LEFT_BRACE  &kp LS(NUMBER_1)  &trans  &trans  &trans     &kp SQT
@@ -119,6 +123,7 @@
         };
 
         FUNCTION {
+            // Windows用レイアウトグループ - Layer 4: ファンクションキーレイヤー
             bindings = <
 &kp SEMI              &kp APOS              &kp LGUI         &trans        &bootloader                                           &bootloader           &trans  &trans  &trans  &trans
 &kp N1                &trans                &trans           &trans        &trans         &bt BT_CLR_ALL      &trans             &trans                &trans  &trans  &trans  &trans
@@ -128,6 +133,7 @@
         };
 
         markdw {
+            // Windows用レイアウトグループ - Layer 5: マークダウン編集レイヤー
             bindings = <
 &trans  &trans  &trans  &trans     &trans                            &kp LG(NUMBER_3)  &kp LG(NUMBER_2)  &kp LG(NUMBER_1)  &trans  &trans
 &trans  &trans  &trans  &trans     &trans  &trans         &kp LA(D)  &kp LA(T)         &trans            &kp LA(U)         &trans  &trans
