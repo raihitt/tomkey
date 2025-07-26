@@ -32,11 +32,6 @@
 
 / {
     behaviors {
-        // カスタムビヘイビア: レイヤー切り替え用
-        tog_on: tog_on {
-            compatible = "zmk,behavior-toggle-on";
-            #binding-cells = <0>;
-        };
     };
 
     keymap {
