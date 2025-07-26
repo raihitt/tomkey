@@ -81,5 +81,23 @@
 &trans  &trans  &trans  &kp LC(V)  &trans  &kp LC(B)      &kp LA(L)  &kp LA(K)                                                     &trans
             >;
         };
+
+        win_layer {
+            bindings = <
+&kp N1  &kp N2  &kp N3  &kp N4  &kp N5                              &kp N6  &kp N7  &kp N8  &kp N9  &kp N0
+&kp Q   &kp W   &kp E   &kp R   &kp T  &trans      &kp Y  &kp U   &kp I   &kp O   &kp P   &kp BACKSLASH
+&kp A   &kp S   &kp D   &kp F   &kp G  &trans      &kp H  &kp J   &kp K   &kp L   &kp SEMICOLON  &kp APOS
+&kp Z   &kp X   &kp C   &kp V   &kp B  &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp N  &kp M  &kp COMMA  &kp DOT  &kp SLASH
+            >;
+        };
+
+        mac_layer {
+            bindings = <
+&kp N1  &kp N2  &kp N3  &kp N4  &kp N5                              &kp N6  &kp N7  &kp N8  &kp N9  &kp N0
+&kp LC(A)   &kp LC(S)   &kp LC(D)   &kp LC(F)   &kp LC(G)  &trans      &kp LC(H)  &kp LC(J)   &kp LC(K)   &kp LC(L)   &kp LC(SEMICOLON)  &kp LC(APOS)
+&kp LC(Z)   &kp LC(X)   &kp LC(C)   &kp LC(V)   &kp LC(B)  &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp N  &kp M  &kp COMMA  &kp DOT  &kp SLASH
+&kp LC(Q)   &kp LC(W)   &kp LC(E)   &kp LC(R)   &kp LC(T)  &kp LC(Y)  &kp LC(U)  &kp LC(I)  &kp LC(O)  &kp LC(P)  &kp LC(MINUS)  &kp LC(EQUAL)
+            >;
+        };
     };
 };
