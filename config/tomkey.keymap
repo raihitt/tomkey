@@ -19,6 +19,7 @@
  * - switch_to_win_layer: Windows用レイヤー(6)をアクティブ
  * - switch_to_mac_bt: Bluetooth切断 → Macデバイス(1)接続
  * - switch_to_mac_layer: Mac用レイヤー(7)をアクティブ
+ * - win_layer_group: Windows用レイアウトグループ(Layer1-5)をtog_onで登録
  */
 
 #include <behaviors.dtsi>
@@ -28,6 +29,12 @@
 
 / {
     behaviors {
+        // カスタムビヘイビア: レイヤー切り替え用
+        tog_on: tog_on {
+            compatible = "zmk,behavior-toggle-on";
+            #binding-cells = <0>;
+        };
+
         // カスタムマクロ: OS切り替え用
         // Windows用Bluetooth切り替え（デバイス0に接続）
 
@@ -69,11 +76,17 @@
         };
 
         // Mac用レイヤー切り替え（レイヤー7をアクティブ、Mac標準キー付き）
-
         switch_to_mac_layer: switch_to_mac_layer {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&macro_press>, <&mo 7>, <&macro_release>, <&mo 7>;
+        };
+
+        // Windows用レイアウトグループ登録（Layer1-5をtog_onで登録）
+        win_layer_group: win_layer_group {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_press &tog_on 1>, <&macro_release &tog_on 1>, <&macro_press &tog_on 2>, <&macro_release &tog_on 2>, <&macro_press &tog_on 3>, <&macro_release &tog_on 3>, <&macro_press &tog_on 4>, <&macro_release &tog_on 4>, <&macro_press &tog_on 5>, <&macro_release &tog_on 5>;
         };
     };
 
