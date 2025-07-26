@@ -44,13 +44,13 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&macro_param_1to1>,
-                       <&macro_press &tog_off>, <&macro_release &tog_off>,
+                       <&macro_press &tog_off 0>, <&macro_release &tog_off 0>,
                        <&macro_wait_time 100>,
                        <&macro_press &bt BT_DISC>, <&macro_release &bt BT_DISC>,
                        <&macro_wait_time 100>,
                        <&macro_press &bt BT_SEL 0>, <&macro_release &bt BT_SEL 0>,
                        <&macro_wait_time 100>,
-                       <&macro_press &tog_on>, <&macro_release &tog_on>;
+                       <&macro_press &tog_on 7>, <&macro_release &tog_on 7>;
             record-usage = <0x1 0x1>;
             usage-page = <0xFF60>;
         };
@@ -61,13 +61,13 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&macro_param_1to1>,
-                       <&macro_press &tog_off>, <&macro_release &tog_off>,
+                       <&macro_press &tog_off 0>, <&macro_release &tog_off 0>,
                        <&macro_wait_time 100>,
                        <&macro_press &bt BT_DISC>, <&macro_release &bt BT_DISC>,
                        <&macro_wait_time 100>,
                        <&macro_press &bt BT_SEL 1>, <&macro_release &bt BT_SEL 1>,
                        <&macro_wait_time 100>,
-                       <&macro_press &tog_on>, <&macro_release &tog_on>;
+                       <&macro_press &tog_on 8>, <&macro_release &tog_on 8>;
             record-usage = <0x1 0x2>;
             usage-page = <0xFF60>;
         };
