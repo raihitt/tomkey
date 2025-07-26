@@ -5,20 +5,10 @@
 
 / {
     behaviors {
-        tog_on: tog_on {
-            compatible = "zmk,behavior-toggle-on";
-            #binding-cells = <0>;
-        };
-
-        tog_off: tog_off {
-            compatible = "zmk,behavior-toggle-off";
-            #binding-cells = <0>;
-        };
-
         switch_to_win: switch_to_win {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&macro_press &tog_off 0>, <&macro_release &tog_off 0>, <&macro_press &tog_on 7>, <&macro_release &tog_on 7>;
+            bindings = <&macro_press &mo 7>, <&macro_release &mo 7>;
         };
     };
 
