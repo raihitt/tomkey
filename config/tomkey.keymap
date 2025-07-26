@@ -14,6 +14,12 @@
             compatible = "zmk,behavior-toggle-off";
             #binding-cells = <0>;
         };
+
+        switch_to_win: switch_to_win {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_param_1to1>, <&macro_press &tog_off 0>, <&macro_release &tog_off 0>, <&macro_press &tog_on 7>, <&macro_release &tog_on 7>;
+        };
     };
 
     keymap {
