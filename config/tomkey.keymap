@@ -30,29 +30,55 @@
     behaviors {
         // カスタムマクロ: OS切り替え用
         // Windows用Bluetooth切り替え（デバイス0に接続）
+
         switch_to_win_bt: switch_to_win_bt {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&macro_press &bt BT_DISC>, <&macro_release &bt BT_DISC>, <&macro_press &bt BT_SEL 0>, <&macro_release &bt BT_SEL 0>;
+            bindings =
+                <&macro_press>,
+                <&bt BT_DISC 0>,
+                <&macro_release>,
+                <&bt BT_DISC 0>,
+                <&macro_press>,
+                <&bt BT_SEL 0>,
+                <&macro_release>,
+                <&bt BT_SEL 0>;
         };
+
         // Windows用レイヤー切り替え（レイヤー7をアクティブ）
+
         switch_to_win_layer: switch_to_win_layer {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&macro_press &mo 7>, <&macro_release &mo 7>;
+            bindings = <&macro_press>, <&mo 7>, <&macro_release>, <&mo 7>;
         };
+
         // Mac用Bluetooth切り替え（デバイス1に接続）
+
         switch_to_mac_bt: switch_to_mac_bt {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&macro_press &bt BT_DISC>, <&macro_release &bt BT_DISC>, <&macro_press &bt BT_SEL 1>, <&macro_release &bt BT_SEL 1>;
+            bindings =
+                <&macro_press>,
+                <&bt BT_DISC 1>,
+                <&macro_release>,
+                <&bt BT_DISC 1>,
+                <&macro_press>,
+                <&bt BT_SEL 1>,
+                <&macro_release>,
+                <&bt BT_SEL 1>;
         };
+
         // Mac用レイヤー切り替え（レイヤー8をアクティブ、Mac標準キー付き）
+
         switch_to_mac_layer: switch_to_mac_layer {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&macro_press &mo 8>, <&macro_release &mo 8>;
+            bindings = <&macro_press>, <&mo 8>, <&macro_release>, <&mo 8>;
         };
+    };
+
+    macros {
     };
 
     keymap {
@@ -105,10 +131,10 @@
 
         FUNCTION {
             bindings = <
-&kp SEMI              &kp APOS              &kp LGUI         &trans        &bootloader                                &bootloader  &trans  &trans  &trans  &trans
-&kp N1                &trans                &trans           &trans        &trans         &bt BT_CLR_ALL      &trans  &trans       &trans  &trans  &trans  &trans
-&kp RIGHT             &kp LEFT              &trans           &trans        &bt BT_DISC 0  &bt BT_SEL 0        &trans  &trans       &trans  &trans  &trans  &trans
-&kp C_BRIGHTNESS_INC  &kp C_BRIGHTNESS_DEC  &kp C_VOLUME_UP  &kp C_VOL_DN  &bt BT_DISC 1  &bt BT_SEL 1        &trans  &trans                               &trans
+&kp SEMI              &kp APOS              &kp LGUI         &trans        &bootloader                                           &bootloader           &trans  &trans  &trans  &trans
+&kp N1                &trans                &trans           &trans        &trans         &bt BT_CLR_ALL      &trans             &trans                &trans  &trans  &trans  &trans
+&kp RIGHT             &kp LEFT              &trans           &trans        &bt BT_DISC 0  &bt BT_SEL 0        &switch_to_win_bt  &switch_to_win_layer  &trans  &trans  &trans  &trans
+&kp C_BRIGHTNESS_INC  &kp C_BRIGHTNESS_DEC  &kp C_VOLUME_UP  &kp C_VOL_DN  &bt BT_DISC 1  &bt BT_SEL 1        &switch_to_mac_bt  &switch_to_mac_layer                          &trans
             >;
         };
 
@@ -124,22 +150,24 @@
         win_layer {
             // Windows用レイヤー（レイヤー7）
             // 標準QWERTY配列
+
             bindings = <
-&kp N1  &kp N2  &kp N3  &kp N4  &kp N5                              &kp N6  &kp N7  &kp N8  &kp N9  &kp N0
-&kp Q   &kp W   &kp E   &kp R   &kp T  &trans      &kp Y  &kp U   &kp I   &kp O   &kp P   &kp BACKSLASH
-&kp A   &kp S   &kp D   &kp F   &kp G  &trans      &kp H  &kp J   &kp K   &kp L   &kp SEMICOLON  &kp APOS
-&kp Z   &kp X   &kp C   &kp V   &kp B  &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp N  &kp M  &kp COMMA  &kp DOT  &kp SLASH
+&kp N1  &kp N2  &kp N3  &kp N4  &kp N5                                           &mo 0  &mo 2  &mo 3  &kp N9         &kp N0
+&kp Q   &kp W   &kp E   &kp R   &kp T   &trans                &kp Y              &kp U  &kp I  &kp O  &kp P          &kp BACKSLASH
+&kp A   &kp S   &kp D   &kp F   &kp G   &trans                &kp H              &kp J  &kp K  &kp L  &kp SEMICOLON  &kp APOS
+&kp Z   &kp X   &kp C   &kp V   &kp B   &kp LEFT_BRACKET      &kp RIGHT_BRACKET  &kp N                               &kp M
             >;
         };
 
         mac_layer {
             // Mac用レイヤー（レイヤー8）
             // Mac標準キー付き（Cmd+A、Cmd+S、Cmd+Z等）
+
             bindings = <
-&kp N1  &kp N2  &kp N3  &kp N4  &kp N5                              &kp N6  &kp N7  &kp N8  &kp N9  &kp N0
-&kp LC(A)   &kp LC(S)   &kp LC(D)   &kp LC(F)   &kp LC(G)  &trans      &kp LC(H)  &kp LC(J)   &kp LC(K)   &kp LC(L)   &kp LC(SEMICOLON)  &kp LC(APOS)
-&kp LC(Z)   &kp LC(X)   &kp LC(C)   &kp LC(V)   &kp LC(B)  &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp N  &kp M  &kp COMMA  &kp DOT  &kp SLASH
-&kp LC(Q)   &kp LC(W)   &kp LC(E)   &kp LC(R)   &kp LC(T)  &kp LC(Y)  &kp LC(U)  &kp LC(I)  &kp LC(O)  &kp LC(P)  &kp LC(MINUS)  &kp LC(EQUAL)
+&kp N1     &kp N2     &kp N3     &kp N4     &kp N5                                              &mo 0      &mo 2      &mo 3      &kp N9             &kp N0
+&kp LC(A)  &kp LC(S)  &kp LC(D)  &kp LC(F)  &kp LC(G)  &trans                &kp LC(H)          &kp LC(J)  &kp LC(K)  &kp LC(L)  &kp LC(SEMICOLON)  &kp LC(APOS)
+&kp LC(Z)  &kp LC(X)  &kp LC(C)  &kp LC(V)  &kp LC(B)  &kp LEFT_BRACKET      &kp RIGHT_BRACKET  &kp N      &kp M      &kp COMMA  &kp DOT            &kp SLASH
+&kp LC(Q)  &kp LC(W)  &kp LC(E)  &kp LC(R)  &kp LC(T)  &kp LC(Y)             &kp LC(U)          &kp LC(I)                                           &kp LC(O)
             >;
         };
     };
