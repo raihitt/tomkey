@@ -44,45 +44,31 @@
         };
 
         // Windows環境切り替えマクロ
-        // 動作: レイヤー0 OFF → Bluetooth切断 → Bluetooth0接続 → win_layer ON
         switch_to_win: switch_to_win {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&macro_param_1to1>,
-                       // レイヤー0（DEFAULT_LAYER）をOFF
                        <&macro_press &tog_off 0>, <&macro_release &tog_off 0>,
                        <&macro_wait_time 100>,
-                       // Bluetooth切断
                        <&macro_press &bt BT_DISC>, <&macro_release &bt BT_DISC>,
                        <&macro_wait_time 100>,
-                       // Bluetooth0に接続
                        <&macro_press &bt BT_SEL 0>, <&macro_release &bt BT_SEL 0>,
                        <&macro_wait_time 100>,
-                       // レイヤー7（WIN_LAYER）をON
                        <&macro_press &tog_on 7>, <&macro_release &tog_on 7>;
-            record-usage = <0x1 0x1>;
-            usage-page = <0xFF60>;
         };
 
         // Mac環境切り替えマクロ
-        // 動作: レイヤー0 OFF → Bluetooth切断 → Bluetooth1接続 → mac_layer ON
         switch_to_mac: switch_to_mac {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&macro_param_1to1>,
-                       // レイヤー0（DEFAULT_LAYER）をOFF
                        <&macro_press &tog_off 0>, <&macro_release &tog_off 0>,
                        <&macro_wait_time 100>,
-                       // Bluetooth切断
                        <&macro_press &bt BT_DISC>, <&macro_release &bt BT_DISC>,
                        <&macro_wait_time 100>,
-                       // Bluetooth1に接続
                        <&macro_press &bt BT_SEL 1>, <&macro_release &bt BT_SEL 1>,
                        <&macro_wait_time 100>,
-                       // レイヤー8（MAC_LAYER）をON
                        <&macro_press &tog_on 8>, <&macro_release &tog_on 8>;
-            record-usage = <0x1 0x2>;
-            usage-page = <0xFF60>;
         };
     };
 
