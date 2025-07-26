@@ -4,6 +4,18 @@
 #include <dt-bindings/zmk/pointing.h>
 
 / {
+    behaviors {
+        tog_on: tog_on {
+            compatible = "zmk,behavior-toggle-on";
+            #binding-cells = <0>;
+        };
+
+        tog_off: tog_off {
+            compatible = "zmk,behavior-toggle-off";
+            #binding-cells = <0>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
