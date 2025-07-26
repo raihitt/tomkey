@@ -5,20 +5,19 @@
  *
  * レイヤー構成:
  * - Layer 0: default_layer - 基本レイヤー
- * - Layer 1: MOUSE - マウス操作レイヤー
- * - Layer 2: SCROLL - スクロール操作レイヤー
- * - Layer 3: CTROL - コントロールレイヤー
- * - Layer 4: NUMBER - 数字入力レイヤー
- * - Layer 5: FUNCTION - ファンクションキーレイヤー
- * - Layer 6: markdw - マークダウン編集レイヤー
- * - Layer 7: win_layer - Windows用レイヤー
- * - Layer 8: mac_layer - Mac用レイヤー（Cmd+A、Cmd+S等のMac標準キー付き）
+ * - Layer 1: SCROLL - スクロール操作レイヤー
+ * - Layer 2: CTROL - コントロールレイヤー
+ * - Layer 3: NUMBER - 数字入力レイヤー
+ * - Layer 4: FUNCTION - ファンクションキーレイヤー
+ * - Layer 5: markdw - マークダウン編集レイヤー
+ * - Layer 6: win_layer - Windows用レイヤー
+ * - Layer 7: mac_layer - Mac用レイヤー（Cmd+A、Cmd+S等のMac標準キー付き）
  *
  * カスタムマクロ:
  * - switch_to_win_bt: Bluetooth切断 → Windowsデバイス(0)接続
- * - switch_to_win_layer: Windows用レイヤー(7)をアクティブ
+ * - switch_to_win_layer: Windows用レイヤー(6)をアクティブ
  * - switch_to_mac_bt: Bluetooth切断 → Macデバイス(1)接続
- * - switch_to_mac_layer: Mac用レイヤー(8)をアクティブ
+ * - switch_to_mac_layer: Mac用レイヤー(7)をアクティブ
  */
 
 #include <behaviors.dtsi>
@@ -45,12 +44,11 @@
                 <&bt BT_SEL 0>;
         };
 
-        // Windows用レイヤー切り替え（レイヤー7をアクティブ）
-
+        // Windows用レイヤー切り替え（レイヤー6をアクティブ）
         switch_to_win_layer: switch_to_win_layer {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&macro_press>, <&mo 7>, <&macro_release>, <&mo 7>;
+            bindings = <&macro_press>, <&mo 6>, <&macro_release>, <&mo 6>;
         };
 
         // Mac用Bluetooth切り替え（デバイス1に接続）
@@ -69,12 +67,12 @@
                 <&bt BT_SEL 1>;
         };
 
-        // Mac用レイヤー切り替え（レイヤー8をアクティブ、Mac標準キー付き）
+        // Mac用レイヤー切り替え（レイヤー7をアクティブ、Mac標準キー付き）
 
         switch_to_mac_layer: switch_to_mac_layer {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&macro_press>, <&mo 8>, <&macro_release>, <&mo 8>;
+            bindings = <&macro_press>, <&mo 7>, <&macro_release>, <&mo 7>;
         };
     };
 
@@ -86,19 +84,10 @@
 
         default_layer {
             bindings = <
-&lt 2 Q           &kp W         &kp E             &kp R           &kp T                                                 &kp Y        &kp U  &kp I     &kp O     &lt 5 P
-&kp A             &kp S         &kp D             &kp F           &kp G        &mo 6                 &kp BACKSLASH      &kp H        &kp J  &kp K     &kp L     &lt 3 ENTER
-&mt LEFT_SHIFT Z  &kp X         &kp C             &kp V           &kp B        &kp LEFT_BRACKET      &kp RIGHT_BRACKET  &kp N        &kp M  &mkp MB2  &mkp MB1  &lt 2 SLASH
-&mo 3             &kp LEFT_ALT  &kp LEFT_COMMAND  &kp LEFT_SHIFT  &lt 4 SPACE  &kp LA(SPACE)         &kp BACKSPACE      &lt 3 ENTER                             &lt 5 ESCAPE
-            >;
-        };
-
-        MOUSE {
-            bindings = <
-&trans  &trans  &trans  &trans  &trans                      &trans  &trans    &trans    &trans    &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &mkp MB1  &mkp MB3  &mkp MB2  &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans    &trans    &trans    &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans                                &trans
+&lt 1 Q           &kp W         &kp E             &kp R           &kp T                                                 &kp Y        &kp U  &kp I     &kp O     &lt 4 P
+&kp A             &kp S         &kp D             &kp F           &kp G        &mo 5                 &kp BACKSLASH      &kp H        &kp J  &kp K     &kp L     &lt 2 ENTER
+&mt LEFT_SHIFT Z  &kp X         &kp C             &kp V           &kp B        &kp LEFT_BRACKET      &kp RIGHT_BRACKET  &kp N        &kp M  &mkp MB2  &mkp MB1  &lt 1 SLASH
+&mo 2             &kp LEFT_ALT  &kp LEFT_COMMAND  &kp LEFT_SHIFT  &lt 3 SPACE  &kp LA(SPACE)         &kp BACKSPACE      &lt 2 ENTER                             &lt 4 ESCAPE
             >;
         };
 
@@ -148,11 +137,10 @@
         };
 
         win_layer {
-            // Windows用レイヤー（レイヤー7）
+            // Windows用レイヤー（レイヤー6）
             // 標準QWERTY配列
-
             bindings = <
-&kp N1  &kp N2  &kp N3  &kp N4  &kp N5                                           &mo 0  &mo 2  &mo 3  &kp N9         &kp N0
+&kp N1  &kp N2  &kp N3  &kp N4  &kp N5                                           &mo 0  &mo 1  &mo 2  &kp N9         &kp N0
 &kp Q   &kp W   &kp E   &kp R   &kp T   &trans                &kp Y              &kp U  &kp I  &kp O  &kp P          &kp BACKSLASH
 &kp A   &kp S   &kp D   &kp F   &kp G   &trans                &kp H              &kp J  &kp K  &kp L  &kp SEMICOLON  &kp APOS
 &kp Z   &kp X   &kp C   &kp V   &kp B   &kp LEFT_BRACKET      &kp RIGHT_BRACKET  &kp N                               &kp M
@@ -160,11 +148,10 @@
         };
 
         mac_layer {
-            // Mac用レイヤー（レイヤー8）
+            // Mac用レイヤー（レイヤー7）
             // Mac標準キー付き（Cmd+A、Cmd+S、Cmd+Z等）
-
             bindings = <
-&kp N1     &kp N2     &kp N3     &kp N4     &kp N5                                              &mo 0      &mo 2      &mo 3      &kp N9             &kp N0
+&kp N1     &kp N2     &kp N3     &kp N4     &kp N5                                              &mo 0      &mo 1      &mo 2      &kp N9             &kp N0
 &kp LC(A)  &kp LC(S)  &kp LC(D)  &kp LC(F)  &kp LC(G)  &trans                &kp LC(H)          &kp LC(J)  &kp LC(K)  &kp LC(L)  &kp LC(SEMICOLON)  &kp LC(APOS)
 &kp LC(Z)  &kp LC(X)  &kp LC(C)  &kp LC(V)  &kp LC(B)  &kp LEFT_BRACKET      &kp RIGHT_BRACKET  &kp N      &kp M      &kp COMMA  &kp DOT            &kp SLASH
 &kp LC(Q)  &kp LC(W)  &kp LC(E)  &kp LC(R)  &kp LC(T)  &kp LC(Y)             &kp LC(U)          &kp LC(I)                                           &kp LC(O)
