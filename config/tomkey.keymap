@@ -1,12 +1,82 @@
+/*
+ * Tomkey Keyboard Keymap Configuration
+ *
+ * このファイルはTomkeyキーボードのキーマップ設定です。
+ *
+ * レイヤー構成:
+ * - Layer 0: default_layer - 基本レイヤー
+ * - Layer 1: MOUSE - マウス操作レイヤー
+ * - Layer 2: SCROLL - スクロール操作レイヤー
+ * - Layer 3: CTROL - コントロール操作レイヤー
+ * - Layer 4: NUMBER - 数字入力レイヤー
+ * - Layer 5: FUNCTION - ファンクションキーレイヤー
+ * - Layer 6: markdw - Markdown編集レイヤー
+ * - Layer 7: win_layer - Windows環境専用レイヤー
+ * - Layer 8: mac_layer - Mac環境専用レイヤー
+ *
+ * カスタムビヘイビア:
+ * - tog_on/tog_off: レイヤーのオン/オフ切り替え
+ * - switch_to_win: Windows環境切り替え（レイヤー0 OFF → Bluetooth切断 → Bluetooth0接続 → win_layer ON）
+ * - switch_to_mac: Mac環境切り替え（レイヤー0 OFF → Bluetooth切断 → Bluetooth1接続 → mac_layer ON）
+ */
+
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/pointing.h>
 
 / {
+    behaviors {
+        // レイヤーのオン/オフ切り替えビヘイビア
+        tog_on: tog_on {
+            compatible = "zmk,behavior-toggle-on";
+            #binding-cells = <0>;
+        };
+
+        tog_off: tog_off {
+            compatible = "zmk,behavior-toggle-off";
+            #binding-cells = <0>;
+        };
+
+        // Windows環境切り替えマクロ
+        // 動作: レイヤー0 OFF → Bluetooth切断 → Bluetooth0接続 → win_layer ON
+        switch_to_win: switch_to_win {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_param_1to1>,
+                       <&macro_press &tog_off>, <&macro_release &tog_off>,
+                       <&macro_wait_time 100>,
+                       <&macro_press &bt BT_DISC>, <&macro_release &bt BT_DISC>,
+                       <&macro_wait_time 100>,
+                       <&macro_press &bt BT_SEL 0>, <&macro_release &bt BT_SEL 0>,
+                       <&macro_wait_time 100>,
+                       <&macro_press &tog_on>, <&macro_release &tog_on>;
+            record-usage = <0x1 0x1>;
+            usage-page = <0xFF60>;
+        };
+
+        // Mac環境切り替えマクロ
+        // 動作: レイヤー0 OFF → Bluetooth切断 → Bluetooth1接続 → mac_layer ON
+        switch_to_mac: switch_to_mac {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_param_1to1>,
+                       <&macro_press &tog_off>, <&macro_release &tog_off>,
+                       <&macro_wait_time 100>,
+                       <&macro_press &bt BT_DISC>, <&macro_release &bt BT_DISC>,
+                       <&macro_wait_time 100>,
+                       <&macro_press &bt BT_SEL 1>, <&macro_release &bt BT_SEL 1>,
+                       <&macro_wait_time 100>,
+                       <&macro_press &tog_on>, <&macro_release &tog_on>;
+            record-usage = <0x1 0x2>;
+            usage-page = <0xFF60>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
+        // Layer 0: 基本レイヤー（デフォルト）
         default_layer {
             bindings = <
 &lt 2 Q           &kp W         &kp E             &kp R           &kp T                                                 &kp Y        &kp U  &kp I     &kp O     &lt 5 P
@@ -16,6 +86,7 @@
             >;
         };
 
+        // Layer 1: マウス操作レイヤー
         MOUSE {
             bindings = <
 &trans  &trans  &trans  &trans  &trans                      &trans  &trans    &trans    &trans    &trans
@@ -25,6 +96,7 @@
             >;
         };
 
+        // Layer 2: スクロール操作レイヤー
         SCROLL {
             bindings = <
 &trans  &trans  &trans  &trans  &trans                                                  &kp LG(A)      &kp LG(W)       &trans          &kp LG(T)        &kp MINUS
@@ -34,6 +106,7 @@
             >;
         };
 
+        // Layer 3: コントロール操作レイヤー
         CTROL {
             bindings = <
 &kp LEFT_BRACE  &kp LS(N1)  &kp LS(FSLH)  &trans     &kp LC(T)                                &trans  &trans  &trans  &trans  &trans
@@ -43,6 +116,7 @@
             >;
         };
 
+        // Layer 4: 数字入力レイヤー
         NUMBER {
             bindings = <
 &kp N1  &kp N2     &kp N3   &kp LS(NUMBER_8)  &kp LS(N9)                              &kp LS(SLASH)     &trans  &trans  &kp SLASH  &kp SEMICOLON
@@ -52,6 +126,7 @@
             >;
         };
 
+        // Layer 5: ファンクションキーレイヤー
         FUNCTION {
             bindings = <
 &kp SEMI              &kp APOS              &kp LGUI         &trans        &bootloader                                &bootloader  &trans  &trans  &trans  &trans
@@ -61,12 +136,33 @@
             >;
         };
 
+        // Layer 6: Markdown編集レイヤー
         markdw {
             bindings = <
 &trans  &trans  &trans  &trans     &trans                            &kp LG(NUMBER_3)  &kp LG(NUMBER_2)  &kp LG(NUMBER_1)  &trans  &trans
 &trans  &trans  &trans  &trans     &trans  &trans         &kp LA(D)  &kp LA(T)         &trans            &kp LA(U)         &trans  &trans
 &trans  &trans  &trans  &trans     &trans  &kp LC(I)      &kp LA(H)  &kp LA(C)         &trans            &kp LA(S)         &trans  &trans
 &trans  &trans  &trans  &kp LC(V)  &trans  &kp LC(B)      &kp LA(L)  &kp LA(K)                                                     &trans
+            >;
+        };
+
+        // Layer 7: Windows環境専用レイヤー
+        win_layer {
+            bindings = <
+&kp N1  &kp N2  &kp N3  &kp N4  &kp N5                              &kp N6  &kp N7  &kp N8  &kp N9  &kp N0
+&kp Q   &kp W   &kp E   &kp R   &kp T  &trans      &kp Y  &kp U   &kp I   &kp O   &kp P   &kp BACKSLASH
+&kp A   &kp S   &kp D   &kp F   &kp G  &trans      &kp H  &kp J   &kp K   &kp L   &kp SEMICOLON  &kp APOS
+&kp Z   &kp X   &kp C   &kp V   &kp B  &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp N  &kp M  &kp COMMA  &kp DOT  &kp SLASH
+            >;
+        };
+
+        // Layer 8: Mac環境専用レイヤー
+        mac_layer {
+            bindings = <
+&kp N1  &kp N2  &kp N3  &kp N4  &kp N5                              &kp N6  &kp N7  &kp N8  &kp N9  &kp N0
+&kp Q   &kp W   &kp E   &kp R   &kp T  &trans      &kp Y  &kp U   &kp I   &kp O   &kp P   &kp BACKSLASH
+&kp A   &kp S   &kp D   &kp F   &kp G  &trans      &kp H  &kp J   &kp K   &kp L   &kp SEMICOLON  &kp APOS
+&kp Z   &kp X   &kp C   &kp V   &kp B  &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp N  &kp M  &kp COMMA  &kp DOT  &kp SLASH
             >;
         };
     };
