@@ -8,7 +8,7 @@
         switch_to_win: switch_to_win {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&macro_press &bt BT_DISC>, <&macro_release &bt BT_DISC>, <&macro_press &bt BT_SEL 0>, <&macro_release &bt BT_SEL 0>, <&macro_press &mo 7>, <&macro_release &mo 7>;
+            bindings = <&macro_press &bt BT_DISC>, <&macro_release &bt BT_DISC>, <&macro_wait_time 10>, <&macro_press &bt BT_SEL 0>, <&macro_release &bt BT_SEL 0>, <&macro_press &mo 7>, <&macro_release &mo 7>;
         };
 
         switch_to_mac: switch_to_mac {
