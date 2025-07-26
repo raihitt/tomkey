@@ -10,6 +10,12 @@
             #binding-cells = <0>;
             bindings = <&macro_press &mo 7>, <&macro_release &mo 7>;
         };
+
+        switch_to_mac: switch_to_mac {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_press &mo 8>, <&macro_release &mo 8>;
+        };
     };
 
     keymap {
