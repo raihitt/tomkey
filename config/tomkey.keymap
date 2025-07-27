@@ -198,7 +198,7 @@
             // WIN専用レイアウトグループ - Layer 4: ファンクションキーレイヤー
 
             bindings = <
-&kp SEMI              &kp LS(EXCL)          &trans  &trans  &trans                      &trans  &reset  &trans  &trans  &trans
+&kp SEMI              &kp LS(EXCL)          &trans  &trans  &trans                      &trans  &trans  &trans  &trans  &trans
 &kp N1                &kp F12               &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans
 &kp RIGHT             &kp LEFT              &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans
 &kp C_BRIGHTNESS_INC  &kp C_BRIGHTNESS_DEC  &trans  &trans  &trans  &trans      &trans  &trans                          &trans
