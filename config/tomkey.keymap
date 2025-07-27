@@ -55,6 +55,22 @@
             #binding-cells = <0>;
             bindings = <&bt BT_SEL 0>;
         };
+
+        // Windows切り替え（Bluetooth + レイヤー切り替え）
+        switch_to_win: switch_to_win {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_press &bt_sel_win>, <&macro_release &bt_sel_win>,
+                      <&macro_press &win_layer_group>, <&macro_release &win_layer_group>;
+        };
+
+        // Mac切り替え（Bluetooth + レイヤー切り替え）
+        switch_to_mac: switch_to_mac {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_press &bt_sel_mac>, <&macro_release &bt_sel_mac>,
+                      <&macro_press &mac_layer_group>, <&macro_release &mac_layer_group>;
+        };
     };
 
     keymap {
@@ -65,7 +81,7 @@
 &lt 1 Q           &kp W         &kp E             &kp R           &kp T                                                 &kp Y        &kp U  &kp I     &kp O     &kp P
 &kp A             &kp S         &kp D             &kp F           &kp G        &kp BACKSLASH      &kp H        &kp J  &kp K     &kp L     &kp ENTER
 &mt LEFT_SHIFT Z  &kp X         &kp C             &kp V           &kp B        &kp LEFT_BRACKET      &kp RIGHT_BRACKET  &kp N        &kp M  &mkp MB2  &mkp MB1  &kp SLASH
-&kp LEFT_ALT  &kp LEFT_COMMAND  &kp LEFT_SHIFT  &kp SPACE  &bt_sel_win         &bt_sel_mac      &kp ENTER                             &kp ESCAPE
+&kp LEFT_ALT  &kp LEFT_COMMAND  &kp LEFT_SHIFT  &kp SPACE  &switch_to_win         &switch_to_mac      &kp ENTER                             &kp ESCAPE
             >;
         };
 
