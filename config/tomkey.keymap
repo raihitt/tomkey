@@ -1,11 +1,7 @@
 /*
- * Tomkey Keyboard - Next Step Keymap
+ * Tomkey Keyboard - Refactored Keymap
  *
- * 改善点:
- * 1. レイヤー命名の統一
- * 2. 機能の最適化
- * 3. 実用性の向上
- * 4. 未使用キーの活用
+ * 733d39aの構造を維持しつつ、最小限の改善を実装
  */
 
 #include <behaviors.dtsi>
@@ -15,25 +11,121 @@
 
 / {
     behaviors {
-        // シンプルなBluetooth切り替え
+        win_layer_group: win_layer_group {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_press>, <&mo 2>, <&macro_release>, <&mo 2>;
+        };
+
+        mac_layer_group: mac_layer_group {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_press>, <&mo 0>, <&macro_release>, <&mo 0>;
+        };
+
+        // Windowsデバイス接続切り替え（シンプル版）
         bt_sel_win: bt_sel_win {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&bt BT_SEL 1>;
         };
 
+        // Macデバイス接続切り替え（シンプル版）
         bt_sel_mac: bt_sel_mac {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&bt BT_SEL 0>;
         };
+
+        // 全てのレイヤーをOFFにするマクロ
+        all_layers_off: all_layers_off {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&mo 2>,
+                <&macro_release>,
+                <&mo 2>,
+                <&macro_press>,
+                <&mo 3>,
+                <&macro_release>,
+                <&mo 3>,
+                <&macro_press>,
+                <&mo 4>,
+                <&macro_release>,
+                <&mo 4>,
+                <&macro_press>,
+                <&mo 5>,
+                <&macro_release>,
+                <&mo 5>,
+                <&macro_press>,
+                <&mo 0>,
+                <&macro_release>,
+                <&mo 0>,
+                <&macro_press>,
+                <&mo 6>,
+                <&macro_release>,
+                <&mo 6>,
+                <&macro_press>,
+                <&mo 0>,
+                <&macro_release>,
+                <&mo 0>,
+                <&macro_press>,
+                <&mo 0>,
+                <&macro_release>,
+                <&mo 0>;
+        };
+
+        // Windows切り替え（Bluetooth + レイヤー切り替え）
+        switch_to_win: switch_to_win {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&all_layers_off>,
+                <&macro_release>,
+                <&all_layers_off>,
+                <&macro_tap_time 100>,
+                <&macro_press>,
+                <&bt_sel_win>,
+                <&macro_release>,
+                <&bt_sel_win>,
+                <&macro_tap_time 100>,
+                <&macro_press>,
+                <&win_layer_group>,
+                <&macro_release>,
+                <&win_layer_group>;
+        };
+
+        // Mac切り替え（Bluetooth + レイヤー切り替え）
+        switch_to_mac: switch_to_mac {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&all_layers_off>,
+                <&macro_release>,
+                <&all_layers_off>,
+                <&macro_tap_time 100>,
+                <&macro_press>,
+                <&bt_sel_mac>,
+                <&macro_release>,
+                <&bt_sel_mac>,
+                <&macro_tap_time 100>,
+                <&macro_press>,
+                <&mac_layer_group>,
+                <&macro_release>,
+                <&mac_layer_group>;
+        };
+    };
+
+    macros {
     };
 
     keymap {
         compatible = "zmk,keymap";
 
-        // Layer 0: BASE (基本QWERTY配列)
-        base_layer {
+        default_layer {
             bindings = <
 &lt 1 Q  &lt 1 W       &kp E          &kp R           &kp T                                   &kp Y        &kp U  &kp I     &kp O     &kp P
 &kp A    &kp S         &kp D          &kp D           &kp F    &kp SPACE       &kp SPACE      &kp G        &kp H  &kp J     &kp K     &kp L
@@ -42,63 +134,63 @@
             >;
         };
 
-        // Layer 1: SCROLL (トラックボールスクロール)
-        scroll_layer {
+        SCROLL {
+            // WIN/MAC共有レイヤー - Layer 1: スクロール操作レイヤー
             bindings = <
 &trans  &trans  &trans  &trans  &trans                                                  &kp LG(A)      &kp LG(W)       &trans          &kp LG(T)        &kp MINUS
 &trans  &trans  &trans  &trans  &trans               &kp LG(F)               &kp LG(C)  &kp LS(LG(V))  &trans          &kp UP_ARROW    &trans           &kp LA(L)
 &trans  &trans  &trans  &trans  &trans               &trans                  &kp LG(C)  &kp LG(V)      &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &kp LG(Y)
-&trans  &trans  &trans  &trans  &kp LC(RIGHT_ARROW)  &kp LC(LEFT_ARROW)      &kp LANG2  &kp LANG1                                                       &bt_sel_win
+&trans  &trans  &trans  &trans  &kp LC(RIGHT_ARROW)  &kp LC(LEFT_ARROW)      &kp LANG2  &kp LANG1                                                       &switch_to_win
             >;
         };
 
-        // Layer 2: CONTROL (コントロール操作)
-        control_layer {
+        CTROL {
+            // WIN専用レイアウトグループ - Layer 2: コントロールレイヤー
             bindings = <
-&kp LC(Z)  &kp LC(X)  &kp LC(C)  &kp LC(V)  &kp LC(S)       &kp HOME   &kp PG_DN   &kp PG_UP   &kp END    &kp BSPC
-&kp LG(Z)  &kp LG(X)  &kp LG(C)  &kp LG(V)  &kp LG(S)       &kp LEFT   &kp DOWN    &kp UP      &kp RIGHT  &kp DEL
-&trans     &trans     &trans     &trans     &trans          &trans     &trans      &trans      &trans     &trans
-&trans     &trans     &trans     &trans     &trans          &trans     &trans      &trans      &trans     &trans
+&kp LEFT_BRACE  &kp LS(N1)  &kp LS(FSLH)  &trans     &kp LC(T)                                &trans  &trans  &trans  &trans  &trans
+&kp APOS        &trans      &trans        &kp LC(D)  &kp LC(F)  &kp LC(LS(V))      &kp LC(A)  &trans  &trans  &trans  &trans  &trans
+&trans          &trans      &trans        &kp LC(X)  &kp LC(V)  &trans             &kp LC(A)  &trans  &trans  &trans  &trans  &trans
+&trans          &trans      &trans        &kp LC(X)  &kp LC(C)  &kp LC(V)          &kp LC(N)  &trans                          &trans
             >;
         };
 
-        // Layer 3: NUMBER (数字・記号)
-        number_layer {
+        NUMBER {
+            // WIN専用レイアウトグループ - Layer 3: 数字入力レイヤー
             bindings = <
-&kp N1     &kp N2     &kp N3     &kp N4     &kp N5          &kp N6     &kp N7      &kp N8      &kp N9     &kp N0
-&kp EXCL   &kp AT     &kp HASH   &kp DLLR   &kp PRCNT       &kp CARET  &kp AMPS    &kp ASTR    &kp LPAR   &kp RPAR
-&trans     &trans     &trans     &trans     &trans          &trans     &trans      &kp MINUS   &kp EQUAL  &kp BSLH
-&trans     &trans     &trans     &trans     &trans          &trans     &trans      &trans      &trans     &trans
+&kp N1  &kp N2     &kp N3   &kp LS(NUMBER_8)  &kp LS(N9)                              &kp LS(SLASH)     &trans  &trans  &kp SLASH  &kp SEMICOLON
+&kp N4  &kp N5     &kp N6   &trans            &trans      &trans      &kp LEFT_BRACE  &kp LS(NUMBER_1)  &trans  &trans  &trans     &kp SQT
+&kp N7  &kp N8     &kp N9   &trans            &trans      &trans      &trans          &kp LEFT_SHIFT    &trans  &trans  &trans     &trans
+&kp N0  &kp COMMA  &kp DOT  &kp MINUS         &trans      &trans      &trans          &trans                                       &trans
             >;
         };
 
-        // Layer 4: FUNCTION (ファンクションキー)
-        function_layer {
+        FUNCTION {
+            // WIN専用レイアウトグループ - Layer 4: ファンクションキーレイヤー
             bindings = <
-&kp F1     &kp F2     &kp F3     &kp F4     &kp F5          &kp F6     &kp F7      &kp F8      &kp F9     &kp F10
-&trans     &trans     &trans     &trans     &trans          &trans     &trans      &trans      &trans     &kp F11
-&trans     &trans     &trans     &trans     &trans          &trans     &trans      &trans      &trans     &kp F12
-&trans     &trans     &trans     &trans     &trans          &trans     &trans      &trans      &trans     &trans
+&kp SEMI              &kp LS(EXCL)          &trans  &trans  &trans                      &trans  &trans  &trans  &trans  &trans
+&kp N1                &kp F12               &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans
+&kp RIGHT             &kp LEFT              &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans
+&kp C_BRIGHTNESS_INC  &kp C_BRIGHTNESS_DEC  &trans  &trans  &trans  &trans      &trans  &trans                          &trans
             >;
         };
 
-        // Layer 5: MARKDOWN (マークダウン編集)
-        markdown_layer {
+        markdw {
+            // WIN専用レイアウトグループ - Layer 5: マークダウン編集レイヤー
             bindings = <
-&kp GRAVE  &kp LS(N1) &kp LS(N2) &kp LS(N3) &kp LS(N4)      &kp LS(N5) &kp LS(N6)  &kp LS(N7)  &kp LS(N8) &kp LS(N9)
-&kp MINUS  &kp LS(N0) &kp EQUAL  &trans     &trans          &trans     &trans      &trans      &trans     &trans
-&trans     &trans     &trans     &trans     &trans          &trans     &trans      &trans      &trans     &trans
-&trans     &trans     &trans     &trans     &trans          &trans     &trans      &trans      &trans     &trans
+&kp GRAVE  &kp LS(N1)  &kp LS(N2)  &kp LS(N3)  &kp LS(N4)                      &kp LS(N5)  &kp LS(N6)  &kp LS(N7)  &kp LS(N8)  &kp LS(N9)
+&kp MINUS  &kp LS(N0)  &kp EQUAL   &trans      &trans      &trans      &trans  &trans      &trans      &trans      &trans      &trans
+&trans     &trans      &trans      &trans      &trans      &trans      &trans  &trans      &trans      &trans      &trans      &trans
+&trans     &trans      &trans      &trans      &trans      &trans      &trans  &trans                                          &trans
             >;
         };
 
-        // Layer 6: SYSTEM (システム管理)
-        system_layer {
+        mac_number {
+            // MAC専用レイアウトグループ - Layer 7: MAC用数字入力レイヤー
             bindings = <
-&bootloader &sys_reset &bt_sel_win &bt_sel_mac &trans        &trans     &trans      &trans      &trans     &trans
-&bt BT_CLR  &trans     &trans     &trans     &trans          &trans     &trans      &trans      &trans     &trans
-&trans     &trans     &trans     &trans     &trans          &trans     &trans      &trans      &trans     &trans
-&trans     &trans     &trans     &trans     &trans          &trans     &trans      &trans      &trans     &trans
+&kp N1  &kp N2     &kp N3   &kp LS(NUMBER_8)  &kp LS(N9)                              &kp LS(SLASH)     &trans  &trans  &kp SLASH  &kp SEMICOLON
+&kp N4  &kp N5     &kp N6   &trans            &trans      &trans      &kp LEFT_BRACE  &kp LS(NUMBER_1)  &trans  &trans  &trans     &kp SQT
+&kp N7  &kp N8     &kp N9   &trans            &trans      &trans      &trans          &kp LEFT_SHIFT    &trans  &trans  &trans     &trans
+&kp N0  &kp COMMA  &kp DOT  &kp MINUS         &trans      &trans      &trans          &trans                                       &trans
             >;
         };
     };
