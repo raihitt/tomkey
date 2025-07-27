@@ -1,7 +1,7 @@
 /*
- * Tomkey Keyboard - Minimal Safe Improvements
+ * Tomkey Keyboard - Simple OS Switching Implementation
  *
- * 元の安定構造を維持しつつ、最小限の改善のみを実装
+ * シンプルなWindows/Mac切り替えマクロを実装
  * レイヤー数: 7個（0-6）に制限
  */
 
@@ -12,18 +12,6 @@
 
 / {
     behaviors {
-        win_layer_group: win_layer_group {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&macro_press>, <&mo 2>, <&macro_release>, <&mo 2>;
-        };
-
-        mac_layer_group: mac_layer_group {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&macro_press>, <&mo 0>, <&macro_release>, <&mo 0>;
-        };
-
         // Windowsデバイス接続切り替え（シンプル版）
         bt_sel_win: bt_sel_win {
             compatible = "zmk,behavior-macro";
@@ -38,46 +26,18 @@
             bindings = <&bt BT_SEL 0>;
         };
 
-        // 全てのレイヤーをOFFにするマクロ（7レイヤー版）
-        all_layers_off: all_layers_off {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings =
-                <&macro_press>,
-                <&mo 2>, <&macro_release>, <&mo 2>,
-                <&mo 3>, <&macro_release>, <&mo 3>,
-                <&mo 4>, <&macro_release>, <&mo 4>,
-                <&mo 5>, <&macro_release>, <&mo 5>,
-                <&mo 6>, <&macro_release>, <&mo 6>,
-                <&mo 0>, <&macro_release>, <&mo 0>;
-        };
-
-        // Windows切り替え（Bluetooth + レイヤー切り替え）
+        // Windows切り替え（シンプル版）
         switch_to_win: switch_to_win {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings =
-                <&macro_press>,
-                <&all_layers_off>,
-                <&macro_release>,
-                <&macro_tap_time 50>,
-                <&bt_sel_win>,
-                <&macro_tap_time 50>,
-                <&win_layer_group>;
+            bindings = <&bt_sel_win>;
         };
 
-        // Mac切り替え（Bluetooth + レイヤー切り替え）
+        // Mac切り替え（シンプル版）
         switch_to_mac: switch_to_mac {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings =
-                <&macro_press>,
-                <&all_layers_off>,
-                <&macro_release>,
-                <&macro_tap_time 50>,
-                <&bt_sel_mac>,
-                <&macro_tap_time 50>,
-                <&mac_layer_group>;
+            bindings = <&bt_sel_mac>;
         };
     };
 
@@ -142,9 +102,9 @@
         };
 
         mac_number {
-            // Layer 6: システム管理 + Mac機能統合
+            // Layer 6: システム管理 + OS切り替え機能
             bindings = <
-                &bootloader &sys_reset &bt_sel_win &bt_sel_mac &trans        &trans     &trans      &trans      &trans     &trans
+                &bootloader &sys_reset &switch_to_win &switch_to_mac &trans        &trans     &trans      &trans      &trans     &trans
                 &bt BT_CLR  &trans     &trans     &trans     &trans          &trans     &trans      &trans      &trans     &trans
                 &trans     &trans     &trans     &trans     &trans          &trans     &trans      &trans      &trans     &trans
                 &trans     &trans     &trans     &trans     &trans          &trans     &trans      &trans      &trans     &trans
