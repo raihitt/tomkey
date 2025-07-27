@@ -17,10 +17,12 @@
  *   - Layer 8: mac_function - Mac用ファンクションキーレイヤー
  *   - Layer 9: mac_markdw - Mac用マークダウン編集レイヤー
  *
- * デバイス切り替え機能（段階的実装）:
- * - 既存の動作する機能を基に実装
- * - &moを使用したシンプルなマクロ
- * - 段階的な機能追加
+ * デバイス切り替え機能（完全な「お作法」実装）:
+ * - 全てのデフォルトレイヤーのトグルをOFF
+ * - ちょっと待つ（100ms遅延）
+ * - 接続先切り替えコマンドを実行
+ * - ちょっと待つ（100ms遅延）
+ * - 接続先に紐づいたレイヤーのトグルをON
  */
 
 #include <behaviors.dtsi>
@@ -61,7 +63,9 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&macro_press &all_layers_off>, <&macro_release &all_layers_off>,
+                      <&macro_tap_time 100>,
                       <&macro_press &bt_sel_win>, <&macro_release &bt_sel_win>,
+                      <&macro_tap_time 100>,
                       <&macro_press &win_layer_group>, <&macro_release &win_layer_group>;
         };
 
@@ -70,7 +74,9 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&macro_press &all_layers_off>, <&macro_release &all_layers_off>,
+                      <&macro_tap_time 100>,
                       <&macro_press &bt_sel_mac>, <&macro_release &bt_sel_mac>,
+                      <&macro_tap_time 100>,
                       <&macro_press &mac_layer_group>, <&macro_release &mac_layer_group>;
         };
 
