@@ -154,10 +154,10 @@
 
         default_layer {
             bindings = <
-&lt 1 Q  &lt 5 W       &kp E          &kp R           &kp T                                  &kp Y      &kp U  &kp I     &kp O     &kp P
-&kp A    &kp S         &kp D          &kp D           &kp F    &kp SPACE      &kp SPACE      &kp G      &kp H  &kp J     &kp K     &kp L
-&kp Z    &kp X         &kp C          &kp V           &kp B    &trans         &trans         &kp N      &kp M  &mkp MB2  &mkp MB1  &mo 1
-&mo 2    &kp LEFT_ALT  &kp RIGHT_GUI  &kp LEFT_SHIFT  &kp TAB  &kp SPACE      &kp BACKSPACE  &kp ENTER                             &kp ESCAPE
+&lt 1 Q  &lt 5 W       &kp E          &kp R           &kp T                                  &kp Y        &kp U  &kp I     &kp O     &kp P
+&kp A    &kp S         &kp D          &kp D           &kp F    &kp SPACE      &kp SPACE      &kp G        &kp H  &kp J     &kp K     &kp L
+&kp Z    &kp X         &kp C          &kp V           &kp B    &trans         &trans         &kp N        &kp M  &mkp MB2  &mkp MB1  &mo 1
+&mo 2    &kp LEFT_ALT  &kp RIGHT_GUI  &kp LEFT_SHIFT  &kp TAB  &kp SPACE      &kp BACKSPACE  &lt 1 ENTER                             &kp ESCAPE
             >;
         };
 
@@ -198,10 +198,10 @@
             // WIN専用レイアウトグループ - Layer 4: ファンクションキーレイヤー
 
             bindings = <
-&kp F1   &kp F2   &kp F3  &kp F4  &kp F5                      &kp F6  &kp F7  &kp F8  &kp F9  &kp F10
-&kp F11  &kp F12  &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans
-&trans   &trans   &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans
-&trans   &trans   &trans  &trans  &trans  &trans      &trans  &trans                          &trans
+&kp SEMI              &kp LS(EXCL)          &trans  &trans  &trans                      &trans  &reset  &trans  &trans  &trans
+&kp N1                &kp F12               &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans
+&kp RIGHT             &kp LEFT              &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans
+&kp C_BRIGHTNESS_INC  &kp C_BRIGHTNESS_DEC  &trans  &trans  &trans  &trans      &trans  &trans                          &trans
             >;
         };
 
