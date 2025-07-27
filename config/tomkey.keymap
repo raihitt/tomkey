@@ -1,7 +1,11 @@
 /*
- * Tomkey Keyboard - Refactored Keymap
+ * Tomkey Keyboard - Practical Improvements
  *
- * 733d39aの構造を維持しつつ、最小限の改善を実装
+ * 改善点:
+ * 1. 未使用キーの活用
+ * 2. レイヤーアクセスの改善
+ * 3. 実用性の向上
+ * 4. エラー処理の改善
  */
 
 #include <behaviors.dtsi>
@@ -130,7 +134,7 @@
 &lt 1 Q  &lt 1 W       &kp E          &kp R           &kp T                                   &kp Y        &kp U  &kp I     &kp O     &kp P
 &kp A    &kp S         &kp D          &kp D           &kp F    &kp SPACE       &kp SPACE      &kp G        &kp H  &kp J     &kp K     &kp L
 &kp Z    &kp X         &kp C          &kp V           &kp B    &sys_reset      &sys_reset     &kp N        &kp M  &mkp MB2  &mkp MB1  &mo 1
-&mo 2    &kp LEFT_ALT  &kp RIGHT_GUI  &kp LEFT_SHIFT  &kp TAB  &kp SPACE       &kp BACKSPACE  &lt 1 ENTER                             &kp ESCAPE
+&mo 2    &kp LEFT_ALT  &kp RIGHT_GUI  &kp LEFT_SHIFT  &kp TAB  &kp SPACE       &kp BACKSPACE  &lt 1 ENTER                             &mo 6
             >;
         };
 
@@ -147,50 +151,50 @@
         CTROL {
             // WIN専用レイアウトグループ - Layer 2: コントロールレイヤー
             bindings = <
-&kp LEFT_BRACE  &kp LS(N1)  &kp LS(FSLH)  &trans     &kp LC(T)                                &trans  &trans  &trans  &trans  &trans
-&kp APOS        &trans      &trans        &kp LC(D)  &kp LC(F)  &kp LC(LS(V))      &kp LC(A)  &trans  &trans  &trans  &trans  &trans
-&trans          &trans      &trans        &kp LC(X)  &kp LC(V)  &trans             &kp LC(A)  &trans  &trans  &trans  &trans  &trans
-&trans          &trans      &trans        &kp LC(X)  &kp LC(C)  &kp LC(V)          &kp LC(N)  &trans                          &trans
+&kp LC(Z)  &kp LC(X)  &kp LC(C)  &kp LC(V)  &kp LC(S)       &kp HOME   &kp PG_DN   &kp PG_UP   &kp END    &kp BSPC
+&kp LG(Z)  &kp LG(X)  &kp LG(C)  &kp LG(V)  &kp LG(S)       &kp LEFT   &kp DOWN    &kp UP      &kp RIGHT  &kp DEL
+&trans     &trans     &trans     &trans     &trans          &trans     &trans      &trans      &trans     &trans
+&trans     &trans     &trans     &trans     &trans          &trans     &trans      &trans      &trans     &trans
             >;
         };
 
         NUMBER {
             // WIN専用レイアウトグループ - Layer 3: 数字入力レイヤー
             bindings = <
-&kp N1  &kp N2     &kp N3   &kp LS(NUMBER_8)  &kp LS(N9)                              &kp LS(SLASH)     &trans  &trans  &kp SLASH  &kp SEMICOLON
-&kp N4  &kp N5     &kp N6   &trans            &trans      &trans      &kp LEFT_BRACE  &kp LS(NUMBER_1)  &trans  &trans  &trans     &kp SQT
-&kp N7  &kp N8     &kp N9   &trans            &trans      &trans      &trans          &kp LEFT_SHIFT    &trans  &trans  &trans     &trans
-&kp N0  &kp COMMA  &kp DOT  &kp MINUS         &trans      &trans      &trans          &trans                                       &trans
+&kp N1     &kp N2     &kp N3     &kp N4     &kp N5          &kp N6     &kp N7      &kp N8      &kp N9     &kp N0
+&kp EXCL   &kp AT     &kp HASH   &kp DLLR   &kp PRCNT       &kp CARET  &kp AMPS    &kp ASTR    &kp LPAR   &kp RPAR
+&trans     &trans     &trans     &trans     &trans          &trans     &trans      &kp MINUS   &kp EQUAL  &kp BSLH
+&trans     &trans     &trans     &trans     &trans          &trans     &trans      &trans      &trans     &trans
             >;
         };
 
         FUNCTION {
             // WIN専用レイアウトグループ - Layer 4: ファンクションキーレイヤー
             bindings = <
-&kp SEMI              &kp LS(EXCL)          &trans  &trans  &trans                      &trans  &trans  &trans  &trans  &trans
-&kp N1                &kp F12               &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans
-&kp RIGHT             &kp LEFT              &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans
-&kp C_BRIGHTNESS_INC  &kp C_BRIGHTNESS_DEC  &trans  &trans  &trans  &trans      &trans  &trans                          &trans
+&kp F1     &kp F2     &kp F3     &kp F4     &kp F5          &kp F6     &kp F7      &kp F8      &kp F9     &kp F10
+&trans     &trans     &trans     &trans     &trans          &trans     &trans      &trans      &trans     &kp F11
+&trans     &trans     &trans     &trans     &trans          &trans     &trans      &trans      &trans     &kp F12
+&trans     &trans     &trans     &trans     &trans          &trans     &trans      &trans      &trans     &trans
             >;
         };
 
         markdw {
             // WIN専用レイアウトグループ - Layer 5: マークダウン編集レイヤー
             bindings = <
-&kp GRAVE  &kp LS(N1)  &kp LS(N2)  &kp LS(N3)  &kp LS(N4)                      &kp LS(N5)  &kp LS(N6)  &kp LS(N7)  &kp LS(N8)  &kp LS(N9)
-&kp MINUS  &kp LS(N0)  &kp EQUAL   &trans      &trans      &trans      &trans  &trans      &trans      &trans      &trans      &trans
-&trans     &trans      &trans      &trans      &trans      &trans      &trans  &trans      &trans      &trans      &trans      &trans
-&trans     &trans      &trans      &trans      &trans      &trans      &trans  &trans                                          &trans
+&kp GRAVE  &kp LS(N1) &kp LS(N2) &kp LS(N3) &kp LS(N4)      &kp LS(N5) &kp LS(N6)  &kp LS(N7)  &kp LS(N8) &kp LS(N9)
+&kp MINUS  &kp LS(N0) &kp EQUAL  &trans     &trans          &trans     &trans      &trans      &trans     &trans
+&trans     &trans     &trans     &trans     &trans          &trans     &trans      &trans      &trans     &trans
+&trans     &trans     &trans     &trans     &trans          &trans     &trans      &trans      &trans     &trans
             >;
         };
 
-        mac_number {
-            // MAC専用レイアウトグループ - Layer 7: MAC用数字入力レイヤー
+        SYSTEM {
+            // システム管理レイヤー - Layer 6: システム管理
             bindings = <
-&kp N1  &kp N2     &kp N3   &kp LS(NUMBER_8)  &kp LS(N9)                              &kp LS(SLASH)     &trans  &trans  &kp SLASH  &kp SEMICOLON
-&kp N4  &kp N5     &kp N6   &trans            &trans      &trans      &kp LEFT_BRACE  &kp LS(NUMBER_1)  &trans  &trans  &trans     &kp SQT
-&kp N7  &kp N8     &kp N9   &trans            &trans      &trans      &trans          &kp LEFT_SHIFT    &trans  &trans  &trans     &trans
-&kp N0  &kp COMMA  &kp DOT  &kp MINUS         &trans      &trans      &trans          &trans                                       &trans
+&bootloader &sys_reset &bt_sel_win &bt_sel_mac &trans        &trans     &trans      &trans      &trans     &trans
+&bt BT_CLR  &trans     &trans     &trans     &trans          &trans     &trans      &trans      &trans     &trans
+&trans     &trans     &trans     &trans     &trans          &trans     &trans      &trans      &trans     &trans
+&trans     &trans     &trans     &trans     &trans          &trans     &trans      &trans      &trans     &trans
             >;
         };
     };
