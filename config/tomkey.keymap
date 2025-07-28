@@ -69,10 +69,10 @@
 
         SCROLL {
             bindings = <
-&trans  &trans  &trans  &trans  &trans                                                  &kp LG(A)      &kp LG(W)       &trans          &kp LG(T)        &kp MINUS
-&trans  &trans  &trans  &trans  &trans               &kp LG(F)               &kp LG(C)  &kp LS(LG(V))  &trans          &kp UP_ARROW    &trans           &kp LA(L)
-&trans  &trans  &trans  &trans  &trans               &trans                  &kp LG(C)  &kp LG(V)      &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &kp LG(Y)
-&trans  &trans  &trans  &trans  &kp LC(RIGHT_ARROW)  &kp LC(LEFT_ARROW)      &kp LANG2  &kp LANG1                                                       &switch_to_win
+&trans          &trans  &trans  &trans  &trans                                                  &kp LG(A)      &kp LG(W)       &trans          &kp LG(T)        &kp MINUS
+&sys_reset      &trans  &trans  &trans  &trans               &kp LG(F)               &kp LG(C)  &kp LS(LG(V))  &trans          &kp UP_ARROW    &trans           &sys_reset
+&bootloader     &trans  &trans  &trans  &trans               &trans                  &kp LG(C)  &kp LG(V)      &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &bootloader
+&switch_to_mac  &trans  &trans  &trans  &kp LC(RIGHT_ARROW)  &kp LC(LEFT_ARROW)      &kp LANG2  &kp LANG1                                                       &switch_to_win
             >;
         };
 
@@ -124,9 +124,9 @@
 
         SYSTEM {
             bindings = <
-&bootloader  &sys_reset  &switch_to_win  &switch_to_mac  &bootloader                      &bootloader  &trans  &trans  &trans  &bootloader
-&bt BT_CLR   &trans      &trans          &trans          &trans       &trans      &trans  &trans       &trans  &trans  &trans  &trans
-&trans       &trans      &trans          &trans          &trans       &trans      &trans  &trans       &trans  &trans  &trans  &trans
+&bootloader  &sys_reset  &switch_to_win  &switch_to_mac  &bootloader                      &bootloader  &sys_reset  &trans  &trans  &bootloader
+&bt BT_CLR   &trans      &trans          &trans          &sys_reset   &trans      &trans  &sys_reset   &trans      &trans  &trans  &trans
+&trans       &trans      &trans          &trans          &trans       &trans      &trans  &trans       &trans      &trans  &trans  &trans
 &trans       &trans      &trans          &trans          &trans       &trans
             >;
         };
