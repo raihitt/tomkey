@@ -18,7 +18,6 @@
 / {
     behaviors {
         // Windowsデバイス接続切り替え（シンプル版）
-
         bt_sel_win: bt_sel_win {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -26,27 +25,24 @@
         };
 
         // Macデバイス接続切り替え（シンプル版）
-
         bt_sel_mac: bt_sel_mac {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&bt BT_SEL 0>;
         };
 
-        // Windows切り替え（シンプル版）
-
+        // Windows切り替え（修正版）
         switch_to_win: switch_to_win {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&bt_sel_win>;
+            bindings = <&bt BT_SEL 1>;
         };
 
-        // Mac切り替え（シンプル版）
-
+        // Mac切り替え（修正版）
         switch_to_mac: switch_to_mac {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&bt_sel_mac>;
+            bindings = <&bt BT_SEL 0>;
         };
     };
 
