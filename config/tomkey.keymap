@@ -1,8 +1,12 @@
 /*
- * Tomkey Keyboard - Simple OS Switching Implementation
+ * Tomkey Keyboard - Windows/Mac切り分け検証版
  *
- * シンプルなWindows/Mac切り替えマクロを実装
- * レイヤー数: 7個（0-6）に制限
+ * レイヤー構成:
+ * Layer 0: デフォルト（変更なし）
+ * Layer 1: Windows用レイヤー
+ * Layer 2: Mac用レイヤー
+ * Layer 3: 調整レイヤー
+ * Layer 4-6: その他機能レイヤー
  */
 
 #include <behaviors.dtsi>
@@ -56,24 +60,37 @@
             >;
         };
 
-        SCROLL {
+        // Layer 1: Windows用レイヤー
+        WINDOWS {
             bindings = <
-                &trans  &trans  &trans  &trans  &trans                                                  &kp LG(A)      &kp LG(W)       &trans          &kp LG(T)        &kp MINUS
-                &trans  &trans  &trans  &trans  &trans               &kp LG(F)               &kp LG(C)  &kp LS(LG(V))  &trans          &kp UP_ARROW    &trans           &kp LA(L)
-                &trans  &trans  &trans  &trans  &trans               &trans                  &kp LG(C)  &kp LG(V)      &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &kp LG(Y)
-                &trans  &trans  &trans  &trans  &kp LC(RIGHT_ARROW)  &kp LC(LEFT_ARROW)      &kp LANG2  &kp LANG1                                                       &switch_to_win
+                &kp LG(A)      &kp LG(W)       &kp LG(E)      &kp LG(R)      &kp LG(T)                              &kp LG(Y)      &kp LG(U)      &kp LG(I)      &kp LG(O)      &kp LG(P)
+                &kp LG(Z)      &kp LG(X)       &kp LG(C)      &kp LG(V)      &kp LG(B)  &kp LG(F)      &kp LG(F)    &kp LG(G)      &kp LG(H)      &kp LG(J)      &kp LG(K)      &kp LG(L)
+                &kp LG(Q)      &kp LG(S)       &kp LG(D)      &kp LG(F)      &kp LG(G)  &kp LG(C)      &kp LG(C)    &kp LG(H)      &kp LG(J)      &kp LG(K)      &mkp MB2       &mkp MB1
+                &mo 3          &kp LEFT_ALT    &kp RIGHT_GUI  &kp LEFT_SHIFT &kp TAB    &kp SPACE      &kp BACKSPACE &lt 1 ENTER                                                      &mo 6
             >;
         };
 
-        CONTROL {
+        // Layer 2: Mac用レイヤー
+        MAC {
             bindings = <
-                &kp LEFT_BRACE  &kp LS(N1)  &kp LS(FSLH)  &trans     &kp LC(T)                                &trans  &trans  &trans  &trans  &trans
-                &kp APOS        &trans      &trans        &kp LC(D)  &kp LC(F)  &kp LC(LS(V))      &kp LC(A)  &trans  &trans  &trans  &trans  &trans
-                &trans          &trans      &trans        &kp LC(X)  &kp LC(V)  &trans             &kp LC(A)  &trans  &trans  &trans  &trans  &trans
-                &trans          &trans      &trans        &kp LC(X)  &kp LC(C)  &kp LC(V)          &kp LC(N)  &trans                          &trans
+                &kp LA(A)      &kp LA(W)       &kp LA(E)      &kp LA(R)      &kp LA(T)                              &kp LA(Y)      &kp LA(U)      &kp LA(I)      &kp LA(O)      &kp LA(P)
+                &kp LA(Z)      &kp LA(X)       &kp LA(C)      &kp LA(V)      &kp LA(B)  &kp LA(F)      &kp LA(F)    &kp LA(G)      &kp LA(H)      &kp LA(J)      &kp LA(K)      &kp LA(L)
+                &kp LA(Q)      &kp LA(S)       &kp LA(D)      &kp LA(F)      &kp LA(G)  &kp LA(C)      &kp LA(C)    &kp LA(H)      &kp LA(J)      &kp LA(K)      &mkp MB2       &mkp MB1
+                &mo 3          &kp LEFT_ALT    &kp RIGHT_GUI  &kp LEFT_SHIFT &kp TAB    &kp SPACE      &kp BACKSPACE &lt 1 ENTER                                                      &mo 6
             >;
         };
 
+        // Layer 3: 調整レイヤー
+        ADJUST {
+            bindings = <
+                &kp F1         &kp F2          &kp F3         &kp F4         &kp F5                                 &kp F6         &kp F7         &kp F8         &kp F9         &kp F10
+                &kp F11        &kp F12         &trans         &trans         &trans     &trans         &trans        &trans         &trans         &trans         &trans         &trans
+                &trans         &trans          &trans         &trans         &trans     &trans         &trans        &trans         &trans         &trans         &trans         &trans
+                &trans         &trans          &trans         &trans         &trans     &trans         &trans        &trans                                                          &trans
+            >;
+        };
+
+        // Layer 4: 数字・記号レイヤー
         NUMBER {
             bindings = <
                 &kp N1  &kp N2     &kp N3   &kp LS(NUMBER_8)  &kp LS(N9)                              &kp LS(SLASH)     &trans  &trans  &kp SLASH  &kp SEMICOLON
@@ -83,6 +100,7 @@
             >;
         };
 
+        // Layer 5: 機能レイヤー
         FUNCTION {
             bindings = <
                 &kp SEMI              &kp LS(EXCL)          &trans  &trans  &trans                      &trans  &trans  &trans  &trans  &trans
@@ -92,17 +110,8 @@
             >;
         };
 
-        MARKDOWN {
-            bindings = <
-                &kp GRAVE  &kp LS(N1)  &kp LS(N2)  &kp LS(N3)  &kp LS(N4)                      &kp LS(N5)  &kp LS(N6)  &kp LS(N7)  &kp LS(N8)  &kp LS(N9)
-                &kp MINUS  &kp LS(N0)  &kp EQUAL   &trans      &trans      &trans      &trans  &trans      &trans      &trans      &trans      &trans
-                &trans     &trans      &trans      &trans      &trans      &trans      &trans  &trans      &trans      &trans      &trans      &trans
-                &trans     &trans      &trans      &trans      &trans      &trans      &trans  &trans                                          &trans
-            >;
-        };
-
+        // Layer 6: システム管理レイヤー
         SYSTEM {
-            // Layer 6: システム管理 + OS切り替え機能
             bindings = <
                 &bootloader &sys_reset &switch_to_win &switch_to_mac &trans        &trans     &trans      &trans      &trans     &trans
                 &bt BT_CLR  &trans     &trans     &trans     &trans          &trans     &trans      &trans      &trans     &trans
