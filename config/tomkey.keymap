@@ -3,10 +3,11 @@
  *
  * レイヤー構成:
  * Layer 0: デフォルト（変更なし）
- * Layer 1: Windows用レイヤー
- * Layer 2: Mac用レイヤー
- * Layer 3: 調整レイヤー
- * Layer 4-6: その他機能レイヤー
+ * Layer 1: スクロールレイヤー（元のまま）
+ * Layer 2: Windows用レイヤー
+ * Layer 3: Mac用レイヤー
+ * Layer 4: 調整レイヤー
+ * Layer 5-6: その他機能レイヤー
  */
 
 #include <behaviors.dtsi>
@@ -60,27 +61,37 @@
             >;
         };
 
-        // Layer 1: Windows用レイヤー
+        // Layer 1: スクロールレイヤー（元のまま）
+        SCROLL {
+            bindings = <
+                &trans  &trans  &trans  &trans  &trans                                                  &kp LG(A)      &kp LG(W)       &trans          &kp LG(T)        &kp MINUS
+                &trans  &trans  &trans  &trans  &trans               &kp LG(F)               &kp LG(C)  &kp LS(LG(V))  &trans          &kp UP_ARROW    &trans           &kp LA(L)
+                &trans  &trans  &trans  &trans  &trans               &trans                  &kp LG(C)  &kp LG(V)      &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &kp LG(Y)
+                &trans  &trans  &trans  &trans  &kp LC(RIGHT_ARROW)  &kp LC(LEFT_ARROW)      &kp LANG2  &kp LANG1                                                       &switch_to_win
+            >;
+        };
+
+        // Layer 2: Windows用レイヤー
         WINDOWS {
             bindings = <
                 &kp LG(A)      &kp LG(W)       &kp LG(E)      &kp LG(R)      &kp LG(T)                              &kp LG(Y)      &kp LG(U)      &kp LG(I)      &kp LG(O)      &kp LG(P)
                 &kp LG(Z)      &kp LG(X)       &kp LG(C)      &kp LG(V)      &kp LG(B)  &kp LG(F)      &kp LG(F)    &kp LG(G)      &kp LG(H)      &kp LG(J)      &kp LG(K)      &kp LG(L)
                 &kp LG(Q)      &kp LG(S)       &kp LG(D)      &kp LG(F)      &kp LG(G)  &kp LG(C)      &kp LG(C)    &kp LG(H)      &kp LG(J)      &kp LG(K)      &mkp MB2       &mkp MB1
-                &mo 3          &kp LEFT_ALT    &kp RIGHT_GUI  &kp LEFT_SHIFT &kp TAB    &kp SPACE      &kp BACKSPACE &lt 1 ENTER                                                      &mo 6
+                &mo 4          &kp LEFT_ALT    &kp RIGHT_GUI  &kp LEFT_SHIFT &kp TAB    &kp SPACE      &kp BACKSPACE &lt 1 ENTER                                                      &mo 6
             >;
         };
 
-        // Layer 2: Mac用レイヤー
+        // Layer 3: Mac用レイヤー
         MAC {
             bindings = <
                 &kp LA(A)      &kp LA(W)       &kp LA(E)      &kp LA(R)      &kp LA(T)                              &kp LA(Y)      &kp LA(U)      &kp LA(I)      &kp LA(O)      &kp LA(P)
                 &kp LA(Z)      &kp LA(X)       &kp LA(C)      &kp LA(V)      &kp LA(B)  &kp LA(F)      &kp LA(F)    &kp LA(G)      &kp LA(H)      &kp LA(J)      &kp LA(K)      &kp LA(L)
                 &kp LA(Q)      &kp LA(S)       &kp LA(D)      &kp LA(F)      &kp LA(G)  &kp LA(C)      &kp LA(C)    &kp LA(H)      &kp LA(J)      &kp LA(K)      &mkp MB2       &mkp MB1
-                &mo 3          &kp LEFT_ALT    &kp RIGHT_GUI  &kp LEFT_SHIFT &kp TAB    &kp SPACE      &kp BACKSPACE &lt 1 ENTER                                                      &mo 6
+                &mo 4          &kp LEFT_ALT    &kp RIGHT_GUI  &kp LEFT_SHIFT &kp TAB    &kp SPACE      &kp BACKSPACE &lt 1 ENTER                                                      &mo 6
             >;
         };
 
-        // Layer 3: 調整レイヤー
+        // Layer 4: 調整レイヤー
         ADJUST {
             bindings = <
                 &kp F1         &kp F2          &kp F3         &kp F4         &kp F5                                 &kp F6         &kp F7         &kp F8         &kp F9         &kp F10
@@ -90,23 +101,13 @@
             >;
         };
 
-        // Layer 4: 数字・記号レイヤー
+        // Layer 5: 数字・記号レイヤー
         NUMBER {
             bindings = <
                 &kp N1  &kp N2     &kp N3   &kp LS(NUMBER_8)  &kp LS(N9)                              &kp LS(SLASH)     &trans  &trans  &kp SLASH  &kp SEMICOLON
                 &kp N4  &kp N5     &kp N6   &trans            &trans      &trans      &kp LEFT_BRACE  &kp LS(NUMBER_1)  &trans  &trans  &trans     &kp SQT
                 &kp N7  &kp N8     &kp N9   &trans            &trans      &trans      &trans          &kp LEFT_SHIFT    &trans  &trans  &trans     &trans
                 &kp N0  &kp COMMA  &kp DOT  &kp MINUS         &trans      &trans      &trans          &trans                                       &trans
-            >;
-        };
-
-        // Layer 5: 機能レイヤー
-        FUNCTION {
-            bindings = <
-                &kp SEMI              &kp LS(EXCL)          &trans  &trans  &trans                      &trans  &trans  &trans  &trans  &trans
-                &kp N1                &kp F12               &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans
-                &kp RIGHT             &kp LEFT              &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans
-                &kp C_BRIGHTNESS_INC  &kp C_BRIGHTNESS_DEC  &trans  &trans  &trans  &trans      &trans  &trans                          &trans
             >;
         };
 
