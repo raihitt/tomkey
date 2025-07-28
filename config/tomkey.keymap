@@ -80,7 +80,7 @@
 
         WINDOWS {
             bindings = <
-&kp LG(A)  &kp LG(W)     &kp LG(E)      &kp LG(R)       &kp LG(T)                                &kp LG(Y)    &kp LG(U)  &kp LG(I)  &kp LG(O)  &kp LG(P)
+&kp A      &kp B         &kp C          &kp D           &kp E                                    &kp LG(Y)    &kp LG(U)  &kp LG(I)  &kp LG(O)  &kp LG(P)
 &kp LG(Z)  &kp LG(X)     &kp LG(C)      &kp LG(V)       &kp LG(B)  &kp LG(F)      &kp LG(F)      &kp LG(G)    &kp LG(H)  &kp LG(J)  &kp LG(K)  &kp LG(L)
 &kp LG(Q)  &kp LG(S)     &kp LG(D)      &kp LG(F)       &kp LG(G)  &kp LG(C)      &kp LG(C)      &kp LG(H)    &kp LG(J)  &kp LG(K)  &mkp MB2   &mkp MB1
 &mo 4      &kp LEFT_ALT  &kp RIGHT_GUI  &kp LEFT_SHIFT  &kp TAB    &kp SPACE      &kp BACKSPACE  &lt 1 ENTER                                   &mo 6
@@ -91,7 +91,7 @@
 
         MAC {
             bindings = <
-&kp LA(A)  &kp LA(W)     &kp LA(E)      &kp LA(R)       &kp LA(T)                                &kp LA(Y)    &kp LA(U)  &kp LA(I)  &kp LA(O)  &kp LA(P)
+&kp N1     &kp N2        &kp N3         &kp N4          &kp N5                                   &kp LA(Y)    &kp LA(U)  &kp LA(I)  &kp LA(O)  &kp LA(P)
 &kp LA(Z)  &kp LA(X)     &kp LA(C)      &kp LA(V)       &kp LA(B)  &kp LA(F)      &kp LA(F)      &kp LA(G)    &kp LA(H)  &kp LA(J)  &kp LA(K)  &kp LA(L)
 &kp LA(Q)  &kp LA(S)     &kp LA(D)      &kp LA(F)       &kp LA(G)  &kp LA(C)      &kp LA(C)      &kp LA(H)    &kp LA(J)  &kp LA(K)  &mkp MB2   &mkp MB1
 &mo 4      &kp LEFT_ALT  &kp RIGHT_GUI  &kp LEFT_SHIFT  &kp TAB    &kp SPACE      &kp BACKSPACE  &lt 1 ENTER                                   &mo 6
@@ -124,10 +124,10 @@
 
         SYSTEM {
             bindings = <
-&bootloader  &sys_reset  &switch_to_win  &switch_to_mac  &trans                      &trans  &trans  &trans  &trans  &trans
-&bt BT_CLR   &trans      &trans          &trans          &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans
-&trans       &trans      &trans          &trans          &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans
-&trans       &trans      &trans          &trans          &trans  &trans
+&bootloader  &sys_reset  &switch_to_win  &switch_to_mac  &bootloader                      &bootloader  &trans  &trans  &trans  &bootloader
+&bt BT_CLR   &trans      &trans          &trans          &trans       &trans      &trans  &trans       &trans  &trans  &trans  &trans
+&trans       &trans      &trans          &trans          &trans       &trans      &trans  &trans       &trans  &trans  &trans  &trans
+&trans       &trans      &trans          &trans          &trans       &trans
             >;
         };
     };
