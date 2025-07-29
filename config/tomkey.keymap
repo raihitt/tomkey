@@ -58,10 +58,10 @@
 
         default_layer {
             bindings = <
-&lt 1 Q  &lt 5 W       &kp E          &kp R             &kp T                                    &kp Y        &kp U  &kp I     &kp O     &lt 6 P
-&kp A    &kp S         &kp D          &kp D             &kp F    &sys_reset       &sys_reset     &kp G        &kp H  &kp J     &kp K     &kp L
-&kp Z    &kp X         &kp C          &kp V             &kp B    &bt_sel_mac      &bt_sel_win    &kp N        &kp M  &mkp MB2  &mkp MB1  &mo 1
-&mo 2    &kp LEFT_ALT  &kp RIGHT_GUI  &lt 3 LEFT_SHIFT  &kp TAB  &kp SPACE        &kp BACKSPACE  &lt 1 ENTER                             &mo 6
+&lt 1 Q  &lt 5 W       &kp E          &kp R  &kp T                                 &kp Y        &kp U  &kp I     &kp O     &lt 6 P
+&kp A    &kp S         &kp D          &kp D  &kp F  &sys_reset      &sys_reset     &kp G        &kp H  &kp J     &kp K     &kp L
+&kp Z    &kp X         &kp C          &kp V  &kp B  &kp TAB         &trans         &kp N        &kp M  &mkp MB2  &mkp MB1  &mo 1
+&mo 2    &kp LEFT_ALT  &kp RIGHT_GUI  &mo 2  &mo 3  &kp SPACE       &kp BACKSPACE  &lt 1 ENTER                             &mo 6
             >;
         };
 
@@ -69,10 +69,10 @@
 
         SCROLL {
             bindings = <
-&trans          &trans  &trans  &trans  &trans                                                  &kp LG(A)      &kp LG(W)       &trans          &kp LG(T)        &kp MINUS
-&sys_reset      &trans  &trans  &trans  &trans               &kp LG(F)               &kp LG(C)  &kp LS(LG(V))  &trans          &kp UP_ARROW    &trans           &sys_reset
-&bootloader     &trans  &trans  &trans  &trans               &trans                  &kp LG(C)  &kp LG(V)      &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &bootloader
-&switch_to_mac  &trans  &trans  &trans  &kp LC(RIGHT_ARROW)  &kp LC(LEFT_ARROW)      &kp LANG2  &kp LANG1                                                       &switch_to_win
+&trans          &trans  &trans  &trans  &trans                                     &kp LG(A)      &kp LG(W)       &trans          &kp LG(T)        &kp MINUS
+&sys_reset      &trans  &trans  &trans  &trans  &kp LG(F)               &kp LG(C)  &kp LS(LG(V))  &trans          &kp UP_ARROW    &trans           &sys_reset
+&bootloader     &trans  &trans  &trans  &trans  &trans                  &kp LG(C)  &kp LG(V)      &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &bootloader
+&switch_to_mac  &trans  &trans  &mo 1   &mo 6   &kp LC(LEFT_ARROW)      &kp LANG2  &kp LANG1                                                       &switch_to_win
             >;
         };
 
@@ -80,10 +80,10 @@
 
         WINDOWS {
             bindings = <
-&kp A      &kp B         &kp C          &kp D           &kp E                                    &kp LG(Y)    &kp LG(U)  &kp LG(I)  &kp LG(O)  &kp LG(P)
-&kp LG(Z)  &kp LG(X)     &kp LG(C)      &kp LG(V)       &kp LG(B)  &kp LG(F)      &kp LG(F)      &kp LG(G)    &kp LG(H)  &kp LG(J)  &kp LG(K)  &kp LG(L)
-&kp LG(Q)  &kp LG(S)     &kp LG(D)      &kp LG(F)       &kp LG(G)  &kp LG(C)      &kp LG(C)      &kp LG(H)    &kp LG(J)  &kp LG(K)  &mkp MB2   &mkp MB1
-&mo 4      &kp LEFT_ALT  &kp RIGHT_GUI  &kp LEFT_SHIFT  &kp TAB    &kp SPACE      &kp BACKSPACE  &lt 1 ENTER                                   &mo 6
+&kp A      &kp B         &kp C          &kp D      &kp E                                    &kp LG(Y)    &kp LG(U)  &kp LG(I)  &kp LG(O)  &kp LG(P)
+&kp LG(Z)  &kp LG(X)     &kp LG(C)      &kp LG(V)  &kp LG(B)  &kp LG(F)      &kp LG(F)      &kp LG(G)    &kp LG(H)  &kp LG(J)  &kp LG(K)  &kp LG(L)
+&kp LG(Q)  &kp LG(S)     &kp LG(D)      &kp LG(F)  &kp LG(G)  &kp LG(C)      &kp LG(C)      &kp LG(H)    &kp LG(J)  &kp LG(K)  &mkp MB2   &mkp MB1
+&mo 4      &kp LEFT_ALT  &kp RIGHT_GUI  &mo 2      &mo 6      &kp SPACE      &kp BACKSPACE  &lt 1 ENTER                                   &mo 6
             >;
         };
 
@@ -91,10 +91,10 @@
 
         MAC {
             bindings = <
-&kp N1     &kp N2        &kp N3         &kp N4          &kp N5                                   &kp LA(Y)    &kp LA(U)  &kp LA(I)  &kp LA(O)  &kp LA(P)
-&kp LA(Z)  &kp LA(X)     &kp LA(C)      &kp LA(V)       &kp LA(B)  &kp LA(F)      &kp LA(F)      &kp LA(G)    &kp LA(H)  &kp LA(J)  &kp LA(K)  &kp LA(L)
-&kp LA(Q)  &kp LA(S)     &kp LA(D)      &kp LA(F)       &kp LA(G)  &kp LA(C)      &kp LA(C)      &kp LA(H)    &kp LA(J)  &kp LA(K)  &mkp MB2   &mkp MB1
-&mo 4      &kp LEFT_ALT  &kp RIGHT_GUI  &kp LEFT_SHIFT  &kp TAB    &kp SPACE      &kp BACKSPACE  &lt 1 ENTER                                   &mo 6
+&kp N1     &kp N2        &kp N3         &kp N4     &kp N5                                   &kp LA(Y)    &kp LA(U)  &kp LA(I)  &kp LA(O)  &kp LA(P)
+&kp LA(Z)  &kp LA(X)     &kp LA(C)      &kp LA(V)  &kp LA(B)  &kp LA(F)      &kp LA(F)      &kp LA(G)    &kp LA(H)  &kp LA(J)  &kp LA(K)  &kp LA(L)
+&kp LA(Q)  &kp LA(S)     &kp LA(D)      &kp LA(F)  &kp LA(G)  &kp LA(C)      &kp LA(C)      &kp LA(H)    &kp LA(J)  &kp LA(K)  &mkp MB2   &mkp MB1
+&mo 4      &kp LEFT_ALT  &kp RIGHT_GUI  &mo 4      &mo 3      &kp SPACE      &kp BACKSPACE  &lt 1 ENTER                                   &mo 6
             >;
         };
 
