@@ -19,6 +19,7 @@
 #include <dt-bindings/zmk/pointing.h>
 
 // OS設定を日本語キーボードのまま使用するための変換定義
+
 #define JP_DQUOTE       AT                // "
 #define JP_AMPERSAND    CARET             // &
 #define JP_QUOTE        AMPERSAND         // '
@@ -46,10 +47,12 @@
 / {
     behaviors {
         // Mod-Morph定義（日本語記号対応）
+
         mo2: mod-morph_2 {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&kp N2>, <&kp JP_DQUOTE>;
+
             mods = <(MOD_LSFT)>;
         };
 
@@ -57,6 +60,7 @@
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&kp N3>, <&kp HASH>;
+
             mods = <(MOD_LSFT)>;
         };
 
@@ -64,6 +68,7 @@
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&kp N6>, <&kp JP_AMPERSAND>;
+
             mods = <(MOD_LSFT)>;
         };
 
@@ -71,6 +76,7 @@
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&kp N7>, <&kp JP_QUOTE>;
+
             mods = <(MOD_LSFT)>;
         };
 
@@ -78,6 +84,7 @@
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&kp N8>, <&kp JP_LPAREN>;
+
             mods = <(MOD_LSFT)>;
         };
 
@@ -85,6 +92,7 @@
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&kp N9>, <&kp JP_RPAREN>;
+
             mods = <(MOD_LSFT)>;
         };
 
@@ -92,6 +100,7 @@
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&kp N0>, <&kp JP_EQUAL>;
+
             mods = <(MOD_LSFT)>;
         };
 
@@ -99,6 +108,7 @@
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&kp MINUS>, <&kp JP_CARET>;
+
             mods = <(MOD_LSFT)>;
         };
 
@@ -106,6 +116,7 @@
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&kp CARET>, <&kp JP_TILDE>;
+
             mods = <(MOD_LSFT)>;
         };
 
@@ -113,6 +124,7 @@
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&kp AT>, <&kp JP_AT>;
+
             mods = <(MOD_LSFT)>;
         };
 
@@ -120,6 +132,7 @@
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&kp COLON>, <&kp JP_COLON>;
+
             mods = <(MOD_LSFT)>;
         };
 
@@ -127,6 +140,7 @@
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&kp SEMICOLON>, <&kp JP_ASTERISK>;
+
             mods = <(MOD_LSFT)>;
         };
 
@@ -134,6 +148,7 @@
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&kp GRAVE>, <&kp JP_BACKQUOTE>;
+
             mods = <(MOD_LSFT)>;
         };
 
@@ -141,6 +156,7 @@
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&kp LEFT_BRACKET>, <&kp JP_LBRACKET>;
+
             mods = <(MOD_LSFT)>;
         };
 
@@ -148,6 +164,7 @@
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&kp RIGHT_BRACKET>, <&kp JP_RBRACKET>;
+
             mods = <(MOD_LSFT)>;
         };
 
@@ -155,6 +172,7 @@
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&kp BACKSLASH>, <&kp JP_UNDERSCORE>;
+
             mods = <(MOD_LSFT)>;
         };
 
@@ -162,6 +180,7 @@
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&kp COMMA>, <&kp JP_LBRACE>;
+
             mods = <(MOD_LSFT)>;
         };
 
@@ -169,6 +188,7 @@
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&kp DOT>, <&kp JP_RBRACE>;
+
             mods = <(MOD_LSFT)>;
         };
 
@@ -176,6 +196,7 @@
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&kp SLASH>, <&kp JP_PIPE>;
+
             mods = <(MOD_LSFT)>;
         };
 
@@ -231,7 +252,7 @@
 
         SCROLL {
             bindings = <
-&trans          &trans  &trans  &trans  &trans                                     &kp LG(A)      &kp LG(W)       &trans          &kp LG(T)        &kp MINUS
+&trans          &mo 2   &trans  &trans  &trans                                     &kp LG(A)      &kp LG(W)       &trans          &kp LG(T)        &kp MINUS
 &sys_reset      &trans  &trans  &trans  &trans  &kp LG(F)               &kp LG(C)  &kp LS(LG(V))  &trans          &kp UP_ARROW    &trans           &sys_reset
 &bootloader     &trans  &trans  &trans  &trans  &trans                  &kp LG(C)  &kp LG(V)      &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &bootloader
 &switch_to_mac  &trans  &trans  &mo 1   &mo 6   &kp LC(LEFT_ARROW)      &kp LANG2  &kp LANG1                                                       &switch_to_win
@@ -275,10 +296,10 @@
 
         NUMBER {
             bindings = <
-&mo2  &mo3     &mo6   &mo8   &mo9                              &mo_slash     &trans  &trans  &mo_slash  &mo_colon
-&kp N4  &kp N5     &kp N6   &trans            &trans      &trans      &mo_lbracket  &mo7  &trans  &trans     &mo_semicolon
-&kp N7  &kp N8     &kp N9   &trans            &trans      &trans      &trans          &mo_minus    &trans  &trans     &trans
-&mo0  &mo_comma  &mo_dot  &mo_minus         &trans      &trans      &trans          &trans                                       &trans
+&mo2     &mo3       &mo6    &mo8    &mo9                              &mo_slash  &trans  &trans  &mo_slash      &mo_colon
+&kp N4   &kp N5     &kp N6  &trans  &trans  &trans      &mo_lbracket  &mo7       &trans  &trans  &mo_semicolon  &kp N7
+&kp N8   &kp N9     &trans  &trans  &trans  &trans      &mo_minus     &trans     &trans  &trans  &mo0           &mo_comma
+&mo_dot  &mo_minus  &trans  &trans  &trans  &trans      &trans
             >;
         };
 
