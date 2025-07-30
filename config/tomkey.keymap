@@ -241,10 +241,10 @@
 
         default_layer {
             bindings = <
-&lt 1 Q  &lt 5 W       &kp E          &kp R  &kp T                                 &kp Y        &kp U  &kp I     &kp O     &lt 6 P
-&kp A    &kp S         &kp D          &kp D  &kp F  &sys_reset      &sys_reset     &kp G        &kp H  &kp J     &kp K     &kp L
-&kp Z    &kp X         &kp C          &kp V  &kp B  &kp TAB         &trans         &kp N        &kp M  &mkp MB2  &mkp MB1  &mo 1
-&mo 2    &kp LEFT_ALT  &kp RIGHT_GUI  &mo 2  &mo 3  &kp SPACE       &kp BACKSPACE  &lt 1 ENTER                             &mo 6
+&lt 1 Q  &lt 5 W       &kp E          &kp R  &kp T                                   &kp Y        &kp U  &kp I     &kp O     &lt 6 P
+&kp A    &kp S         &kp D          &kp D  &kp F    &sys_reset      &sys_reset     &kp G        &kp H  &kp J     &kp K     &kp L
+&kp Z    &kp X         &kp C          &kp V  &kp B    &kp TAB         &trans         &kp N        &kp M  &mkp MB2  &mkp MB1  &mo 1
+&mo 2    &kp LEFT_ALT  &kp RIGHT_GUI  &mo 2  &kp TAB  &kp SPACE       &kp BACKSPACE  &lt 5 ENTER                             &mo 6
             >;
         };
 
@@ -252,10 +252,10 @@
 
         SCROLL {
             bindings = <
-&trans          &mo 2   &trans  &trans  &trans                                     &kp LG(A)      &kp LG(W)       &trans          &kp LG(T)        &kp MINUS
-&sys_reset      &trans  &trans  &trans  &trans  &kp LG(F)               &kp LG(C)  &kp LS(LG(V))  &trans          &kp UP_ARROW    &trans           &sys_reset
-&bootloader     &trans  &trans  &trans  &trans  &trans                  &kp LG(C)  &kp LG(V)      &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &bootloader
-&switch_to_mac  &trans  &trans  &mo 1   &mo 6   &kp LC(LEFT_ARROW)      &kp LANG2  &kp LANG1                                                       &switch_to_win
+&trans     &mo 2   &mo 3   &trans  &trans                         &trans     &kp LC(W)       &trans          &kp LC(T)        &kp MINUS
+&kp LCTRL  &trans  &trans  &trans  &trans  &trans      &trans     &trans     &trans          &kp UP_ARROW    &trans           &trans
+&trans     &trans  &trans  &trans  &trans  &trans      &trans     &trans     &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &kp LC(Y)
+&trans     &trans  &trans  &trans  &trans  &trans      &kp LANG2  &kp LANG1                                                   &kp LC(Z)
             >;
         };
 
@@ -263,10 +263,10 @@
 
         WINDOWS {
             bindings = <
-&kp A      &kp B         &kp C          &kp D      &kp E                                    &kp LG(Y)    &kp LG(U)  &kp LG(I)  &kp LG(O)  &kp LG(P)
-&kp LG(Z)  &kp LG(X)     &kp LG(C)      &kp LG(V)  &kp LG(B)  &kp LG(F)      &kp LG(F)      &kp LG(G)    &kp LG(H)  &kp LG(J)  &kp LG(K)  &kp LG(L)
-&kp LG(Q)  &kp LG(S)     &kp LG(D)      &kp LG(F)  &kp LG(G)  &kp LG(C)      &kp LG(C)      &kp LG(H)    &kp LG(J)  &kp LG(K)  &mkp MB2   &mkp MB1
-&mo 4      &kp LEFT_ALT  &kp RIGHT_GUI  &mo 2      &mo 6      &kp SPACE      &kp BACKSPACE  &lt 1 ENTER   &kp LANG2  &kp LANG1
+&trans     &trans     &kp LC(D)  &kp LC(R)  &kp SPACE                                &kp LC(A)  &kp LC(W)  &kp SPACE  &kp LC(SPACE)  &kp SPACE
+&kp SPACE  &kp SPACE  &kp LC(S)  &kp LC(F)  &kp LC(F)  &kp LC(LS(V))      &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE      &kp SPACE
+&kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE          &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE      &kp LC(Y)
+&kp SPACE  &kp SPACE  &kp SPACE  &kp LC(X)  &kp LC(C)  &kp LC(V)          &kp LC(N)  &kp SPACE                                       &kp LC(Z)
             >;
         };
 
@@ -274,10 +274,10 @@
 
         MAC {
             bindings = <
-&kp N1     &kp N2        &kp N3         &kp N4     &kp N5                                   &kp LA(Y)    &kp LA(U)  &kp LA(I)  &kp LA(O)  &kp LA(P)
-&kp LA(Z)  &kp LA(X)     &kp LA(C)      &kp LA(V)  &kp LA(B)  &kp LA(F)      &kp LA(F)      &kp LA(G)    &kp LA(H)  &kp LA(J)  &kp LA(K)  &kp LA(L)
-&kp LA(Q)  &kp LA(S)     &kp LA(D)      &kp LA(F)  &kp LA(G)  &kp LA(C)      &kp LA(C)      &kp LA(H)    &kp LA(J)  &kp LA(K)  &mkp MB2   &mkp MB1
-&mo 4      &kp LEFT_ALT  &kp RIGHT_GUI  &mo 4      &mo 3      &kp SPACE      &kp BACKSPACE  &lt 1 ENTER   &kp LANG2  &kp LANG1
+&kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE                                         &kp LG(A)            &kp LG(W)  &kp SPACE  &kp LG(T)  &kp SPACE
+&kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE  &kp LG(LS(V))      &kp SPACE           &kp SPACE            &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE
+&kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE          &kp LC(LEFT_ARROW)  &kp LC(RIGHT_ARROW)  &kp SPACE  &kp SPACE  &kp SPACE  &kp LG(SPACE)
+&kp SPACE  &kp SPACE  &kp SPACE  &kp LG(X)  &kp LG(C)  &kp LG(V)          &kp LG(N)           &kp SPACE                                             &kp LG(Z)
             >;
         };
 
@@ -285,10 +285,10 @@
 
         ADJUST {
             bindings = <
-&kp F1   &kp F2   &kp F3  &kp F4  &kp F5                      &kp F6     &kp F7  &kp F8  &kp F9  &kp F10
-&kp F11  &kp F12  &trans  &trans  &trans  &trans      &trans  &mo_comma  &trans  &trans  &trans  &trans
-&trans   &trans   &trans  &trans  &trans  &trans      &trans  &trans     &trans  &trans  &trans  &trans
-&trans   &trans   &trans  &trans  &trans  &trans      &trans  &trans                             &trans
+&trans  &trans  &trans  &trans  &trans                      &bootloader  &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE
+&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans       &trans     &trans     &trans     &trans
+&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans       &trans     &trans     &trans     &trans
+&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans                                        &trans
             >;
         };
 
@@ -296,10 +296,10 @@
 
         NUMBER {
             bindings = <
-&mo2     &mo3       &mo6    &mo8    &mo9                              &mo_slash  &trans  &trans  &mo_slash      &mo_colon
-&kp N4   &kp N5     &kp N6  &trans  &trans  &trans      &mo_lbracket  &mo7       &trans  &trans  &mo_semicolon  &kp N7
-&kp N8   &kp N9     &trans  &trans  &trans  &trans      &mo_minus     &trans     &trans  &trans  &mo0           &mo_comma
-&mo_dot  &mo_minus  &trans  &trans  &trans  &trans      &kp LANG2     &kp LANG1
+&kp N1  &kp N2     &kp N3   &trans     &trans                           &kp QUESTION     &trans  &trans  &kp SLASH     &trans
+&kp N4  &kp N5     &kp N6   &trans     &trans  &trans      &kp AT_SIGN  &kp EXCLAMATION  &trans  &trans  &kp ASTERISK  &trans
+&kp N7  &kp N8     &kp N9   &trans     &trans  &trans      &mo_minus    &kp COLON        &trans  &trans  &trans        &trans
+&kp N0  &kp COMMA  &kp DOT  &kp EQUAL  &trans  &trans      &trans       &trans
             >;
         };
 
@@ -307,10 +307,10 @@
 
         SYSTEM {
             bindings = <
-&bootloader  &sys_reset  &switch_to_win  &switch_to_mac  &bootloader                      &bootloader  &sys_reset  &trans  &trans  &bootloader
-&bt BT_CLR   &trans      &trans          &trans          &sys_reset   &trans      &trans  &sys_reset   &trans      &trans  &trans  &trans
-&trans       &trans      &trans          &trans          &trans       &trans      &trans  &trans       &trans      &trans  &trans  &trans
-&trans       &trans      &trans          &trans          &trans       &kp LANG2   &kp LANG1
+&bootloader  &sys_reset  &switch_to_win  &switch_to_mac  &bootloader                           &bootloader  &sys_reset  &trans  &trans  &bootloader
+&bt BT_CLR   &trans      &trans          &trans          &sys_reset   &trans           &trans  &sys_reset   &trans      &trans  &trans  &trans
+&trans       &trans      &trans          &trans          &trans       &bt_sel_win      &trans  &trans       &trans      &trans  &trans  &trans
+&trans       &trans      &trans          &trans          &trans       &bt_sel_mac      &trans
             >;
         };
     };
