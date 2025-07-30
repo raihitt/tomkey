@@ -255,7 +255,7 @@
 &trans          &mo 2   &trans  &trans  &trans                                     &kp LG(A)      &kp LG(W)       &trans          &kp LG(T)        &kp MINUS
 &sys_reset      &trans  &trans  &trans  &trans  &kp LG(F)               &kp LG(C)  &kp LS(LG(V))  &trans          &kp UP_ARROW    &trans           &sys_reset
 &bootloader     &trans  &trans  &trans  &trans  &trans                  &kp LG(C)  &kp LG(V)      &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &bootloader
-&switch_to_mac  &trans  &trans  &mo 1   &mo 6   &kp LC(LEFT_ARROW)      &kp LANG2  &kp LANG1                                                       &switch_to_win
+&switch_to_mac  &trans  &trans  &mo 1   &mo 6   &kp LC(LEFT_ARROW)      &trans     &trans                                                           &switch_to_win
             >;
         };
 
