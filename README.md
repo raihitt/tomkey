@@ -49,6 +49,34 @@
   - ご使用の時は本リポジトリをフォークしてお使いください
     - ※フォークしてマクロ等にパスワードなどを設定する際はリポジトリが public になってしまい情報漏洩につながりますのでご注意ください
 
+### ZMK Keymap Editor の設定について
+
+**重要**: ZMK Keymap Editor を使用する際に「config directory」が見つからないエラーが発生した場合の対処法
+
+1. **問題の原因**: ZMK Keymap Editor はリポジトリのルートレベルで`config`ディレクトリを探しますが、本プロジェクトでは`tomkey/config`に配置されています。
+
+2. **解決方法**: リポジトリのルートレベルに`config`ディレクトリを作成し、必要なファイルをコピーしてください。
+
+   ```bash
+   # リポジトリのルートディレクトリで実行
+   mkdir -p config
+   cp -r tomkey/config/* config/
+   ```
+
+3. **必要なファイル**: 以下のファイルが正しくコピーされていることを確認してください
+   - `config/tomkey.json` - キーボードのレイアウト定義
+   - `config/tomkey.keymap` - キーマップ設定
+   - `config/west.yml` - Zephyrの設定ファイル
+   - `config/boards/shields/tomkey/` - シールド設定ファイル群
+
+4. **確認方法**: コピー後、以下のコマンドでファイルが存在することを確認してください
+   ```bash
+   ls -la config/
+   ls -la config/boards/shields/tomkey/
+   ```
+
+この設定により、ZMK Keymap Editor が正しくリポジトリを認識し、キーマップの編集が可能になります。
+
 ### レイヤーマップ
 
 - レイヤー 0 がデフォルトです
@@ -64,6 +92,26 @@
   ![tomkey layer6](img/layer6.png)
 
 ## その他
+
+### トラブルシューティング
+
+#### ZMK Keymap Editor で「config directory」エラーが発生する場合
+
+**症状**: ZMK Keymap Editor でリポジトリを読み込む際に「The repository you're trying to load from doesn't have a defined config directory」エラーが表示される
+
+**原因**: ZMK Keymap Editor が期待するディレクトリ構造と実際の構造が異なる
+
+**解決手順**:
+1. リポジトリのルートディレクトリに移動
+2. `config`ディレクトリを作成: `mkdir -p config`
+3. 設定ファイルをコピー: `cp -r tomkey/config/* config/`
+4. ファイルが正しくコピーされたことを確認: `ls -la config/`
+
+#### その他のよくある問題
+
+- **バッテリーが認識されない**: 極性を確認してください（赤色が+極）
+- **OLEDが表示されない**: Windows使用時は`tomkey_L.conf`の設定を確認
+- **キーマップが反映されない**: ZMKStudioでファームウェアを再ビルドしてください
 
 不明な点がある場合は下記アカウントにご連絡ください
 https://x.com/tomcat09131
