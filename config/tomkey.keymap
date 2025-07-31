@@ -263,10 +263,10 @@
 
         WINDOWS {
             bindings = <
-&trans     &trans     &kp LC(D)  &kp LC(R)  &kp LC(T)                                &kp LC(A)  &kp LC(W)  &kp SPACE  &kp LC(T)  &kp SPACE
-&trans     &trans     &kp LC(S)  &kp LC(F)  &kp LC(F)  &kp LC(LS(V))      &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE
-&kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE          &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE  &kp LC(Y)
-&kp SPACE  &kp SPACE  &kp SPACE  &kp LC(X)  &kp LC(C)  &kp LC(V)          &kp LC(N)  &kp SPACE                                   &kp LC(Z)
+&trans     &trans     &kp LC(D)  &kp LC(R)  &kp LC(T)                                &kp LC(A)  &kp LC(W)  &kp SPACE               &kp LC(T)                &kp SPACE
+&trans     &trans     &kp LC(S)  &kp LC(F)  &kp LC(F)  &kp LC(LS(V))      &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE               &kp SPACE                &kp SPACE
+&kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE          &kp SPACE  &kp SPACE  &kp SPACE  &kp LS(LG(LEFT_ARROW))  &kp LS(LG(RIGHT_ARROW))  &kp LC(Y)
+&kp SPACE  &kp SPACE  &kp SPACE  &kp LC(X)  &kp LC(C)  &kp LC(V)          &kp LC(N)  &kp SPACE                                                              &kp LC(Z)
             >;
         };
 
@@ -274,10 +274,10 @@
 
         MAC {
             bindings = <
-&kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE                                         &kp LG(A)            &kp LG(W)  &kp SPACE  &kp LG(T)  &kp SPACE
-&kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE  &kp LG(LS(V))      &kp SPACE           &kp SPACE            &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE
-&kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE          &kp LC(LEFT_ARROW)  &kp LC(RIGHT_ARROW)  &kp SPACE  &kp SPACE  &kp SPACE  &kp LG(SPACE)
-&kp SPACE  &kp SPACE  &kp SPACE  &kp LG(X)  &kp LG(C)  &kp LG(V)          &kp LG(N)           &kp SPACE                                             &kp LG(Z)
+&kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE                                         &kp LG(A)            &kp LG(W)  &kp SPACE           &kp LG(T)            &kp SPACE
+&kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE  &kp LG(LS(V))      &kp SPACE           &kp SPACE            &kp SPACE  &kp SPACE           &kp SPACE            &kp SPACE
+&kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE          &kp LC(LEFT_ARROW)  &kp LC(RIGHT_ARROW)  &kp SPACE  &kp LC(LEFT_ARROW)  &kp LC(RIGHT_ARROW)  &kp LG(SPACE)
+&kp SPACE  &kp SPACE  &kp SPACE  &kp LG(X)  &kp LG(C)  &kp LG(V)          &kp LG(N)           &kp SPACE                                                                &kp LG(Z)
             >;
         };
 
